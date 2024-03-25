@@ -32,6 +32,7 @@
 		923B597F2BB213A500537676 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B597D2BB213A500537676 /* NowPlayingViewController.swift */; };
 		923B59802BB213A500537676 /* NowPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923B597E2BB213A500537676 /* NowPlayingViewController.xib */; };
 		923B59852BB220AE00537676 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59842BB220AE00537676 /* AppTabBarController.swift */; };
+		923B598F2BB23A7D00537676 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B598E2BB23A7D00537676 /* Alertable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		923B597D2BB213A500537676 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		923B597E2BB213A500537676 /* NowPlayingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowPlayingViewController.xib; sourceTree = "<group>"; };
 		923B59842BB220AE00537676 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
+		923B598E2BB23A7D00537676 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923B598F2BB23A7D00537676 /* Alertable.swift in Sources */,
 				923B596C2BB209C800537676 /* AppDIContainer.swift in Sources */,
 				923B59552BB1AE3000537676 /* DefaultNetwork.swift in Sources */,
 				923B595B2BB1B42200537676 /* NetworkError.swift in Sources */,
