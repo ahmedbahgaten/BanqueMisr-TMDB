@@ -37,6 +37,8 @@
 		923B59982BB23E3E00537676 /* MovieRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59972BB23E3E00537676 /* MovieRequestDTO.swift */; };
 		923B599A2BB23E6B00537676 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59992BB23E6B00537676 /* Movie.swift */; };
 		923B599D2BB23F2B00537676 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B599C2BB23F2B00537676 /* Extension + String.swift */; };
+		923B59A12BB241F100537676 /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59A02BB241F100537676 /* MoviesRepository.swift */; };
+		923B59A62BB2457300537676 /* DefaultMoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59A52BB2457300537676 /* DefaultMoviesRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		923B59972BB23E3E00537676 /* MovieRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequestDTO.swift; sourceTree = "<group>"; };
 		923B59992BB23E6B00537676 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		923B599C2BB23F2B00537676 /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
+		923B59A02BB241F100537676 /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
+		923B59A52BB2457300537676 /* DefaultMoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMoviesRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +348,7 @@
 		923B59912BB23C2800537676 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				923B599E2BB241D900537676 /* Interfaces */,
 				923B59922BB23C3B00537676 /* Entities */,
 			);
 			path = Domain;
@@ -360,6 +365,7 @@
 		923B59932BB23C5A00537676 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				923B59A42BB2456100537676 /* Repositories */,
 				923B59942BB23C6800537676 /* DTOs */,
 			);
 			path = Data;
@@ -380,6 +386,30 @@
 				923B599C2BB23F2B00537676 /* Extension + String.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		923B599E2BB241D900537676 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				923B599F2BB241E100537676 /* Repositories */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		923B599F2BB241E100537676 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				923B59A02BB241F100537676 /* MoviesRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		923B59A42BB2456100537676 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				923B59A52BB2457300537676 /* DefaultMoviesRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,9 +547,11 @@
 			files = (
 				923B598F2BB23A7D00537676 /* Alertable.swift in Sources */,
 				923B596C2BB209C800537676 /* AppDIContainer.swift in Sources */,
+				923B59A12BB241F100537676 /* MoviesRepository.swift in Sources */,
 				923B59552BB1AE3000537676 /* DefaultNetwork.swift in Sources */,
 				923B595B2BB1B42200537676 /* NetworkError.swift in Sources */,
 				923B59772BB2138F00537676 /* UpcomingMoviesViewController.swift in Sources */,
+				923B59A62BB2457300537676 /* DefaultMoviesRepository.swift in Sources */,
 				923B59532BB1AC7F00537676 /* DataTransferService.swift in Sources */,
 				923B59572BB1B3B700537676 /* DefaultSessionManager.swift in Sources */,
 				923B59962BB23D8600537676 /* MovieResponseDTO.swift in Sources */,
