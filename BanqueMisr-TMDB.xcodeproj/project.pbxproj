@@ -26,6 +26,7 @@
 		923B59672BB2038400537676 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59662BB2038400537676 /* AppConfigurations.swift */; };
 		923B59692BB208DD00537676 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59682BB208DD00537676 /* AppCoordinator.swift */; };
 		923B596C2BB209C800537676 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B596B2BB209C800537676 /* AppDIContainer.swift */; };
+		923B596E2BB20D0200537676 /* MoviesTabBarDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B596D2BB20D0200537676 /* MoviesTabBarDIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		923B59662BB2038400537676 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 		923B59682BB208DD00537676 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		923B596B2BB209C800537676 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		923B596D2BB20D0200537676 /* MoviesTabBarDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTabBarDIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		923B591B2BB12E9C00537676 /* BanqueMisr-TMDB */ = {
 			isa = PBXGroup;
 			children = (
+				923B596F2BB2114C00537676 /* Presentation */,
 				923B596A2BB209BB00537676 /* DIContainer */,
 				923B59652BB1ED7100537676 /* Resources */,
 				923B59642BB1ED6200537676 /* Application */,
@@ -196,6 +199,53 @@
 				923B596D2BB20D0200537676 /* MoviesTabBarDIContainer.swift */,
 			);
 			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		923B596F2BB2114C00537676 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				923B59702BB2115200537676 /* MoviesTabBar */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		923B59702BB2115200537676 /* MoviesTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				923B59712BB2116200537676 /* Tabs */,
+			);
+			path = MoviesTabBar;
+			sourceTree = "<group>";
+		};
+		923B59712BB2116200537676 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				923B59742BB2118900537676 /* UpcomingMovies */,
+				923B59732BB2117F00537676 /* Popular */,
+				923B59722BB2117700537676 /* NowPlaying */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		923B59722BB2117700537676 /* NowPlaying */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		923B59732BB2117F00537676 /* Popular */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Popular;
+			sourceTree = "<group>";
+		};
+		923B59742BB2118900537676 /* UpcomingMovies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UpcomingMovies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +387,7 @@
 				923B59572BB1B3B700537676 /* DefaultSessionManager.swift in Sources */,
 				923B59512BB1AC3900537676 /* EndPoint.swift in Sources */,
 				923B59672BB2038400537676 /* AppConfigurations.swift in Sources */,
+				923B596E2BB20D0200537676 /* MoviesTabBarDIContainer.swift in Sources */,
 				923B59632BB1E54900537676 /* JsonResponseDecoder.swift in Sources */,
 				923B591D2BB12E9C00537676 /* AppDelegate.swift in Sources */,
 				923B591F2BB12E9C00537676 /* SceneDelegate.swift in Sources */,
