@@ -131,11 +131,12 @@
 		923B591B2BB12E9C00537676 /* BanqueMisr-TMDB */ = {
 			isa = PBXGroup;
 			children = (
-				923B596F2BB2114C00537676 /* Presentation */,
-				923B596A2BB209BB00537676 /* DIContainer */,
-				923B59652BB1ED7100537676 /* Resources */,
+				923B598D2BB23A6C00537676 /* Utils */,
 				923B59642BB1ED6200537676 /* Application */,
 				923B594E2BB1AC0800537676 /* Infrastructure */,
+				923B596A2BB209BB00537676 /* DIContainer */,
+				923B596F2BB2114C00537676 /* Presentation */,
+				923B59652BB1ED7100537676 /* Resources */,
 			);
 			path = "BanqueMisr-TMDB";
 			sourceTree = "<group>";
@@ -239,8 +240,8 @@
 		923B59722BB2117700537676 /* NowPlaying */ = {
 			isa = PBXGroup;
 			children = (
-				923B597D2BB213A500537676 /* NowPlayingViewController.swift */,
-				923B597E2BB213A500537676 /* NowPlayingViewController.xib */,
+				923B59882BB239F400537676 /* ViewModel */,
+				923B59872BB239DF00537676 /* ViewController */,
 			);
 			path = NowPlaying;
 			sourceTree = "<group>";
@@ -248,8 +249,8 @@
 		923B59732BB2117F00537676 /* Popular */ = {
 			isa = PBXGroup;
 			children = (
-				923B59792BB2139B00537676 /* PopularMoviesViewController.swift */,
-				923B597A2BB2139B00537676 /* PopularMoviesViewController.xib */,
+				923B598A2BB23A0100537676 /* ViewModel */,
+				923B59892BB239FA00537676 /* ViewController */,
 			);
 			path = Popular;
 			sourceTree = "<group>";
@@ -257,10 +258,74 @@
 		923B59742BB2118900537676 /* UpcomingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				923B598C2BB23A0F00537676 /* ViewModel */,
+				923B598B2BB23A0900537676 /* ViewController */,
+			);
+			path = UpcomingMovies;
+			sourceTree = "<group>";
+		};
+		923B59872BB239DF00537676 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				923B597D2BB213A500537676 /* NowPlayingViewController.swift */,
+				923B597E2BB213A500537676 /* NowPlayingViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		923B59882BB239F400537676 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		923B59892BB239FA00537676 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				923B59792BB2139B00537676 /* PopularMoviesViewController.swift */,
+				923B597A2BB2139B00537676 /* PopularMoviesViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		923B598A2BB23A0100537676 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		923B598B2BB23A0900537676 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
 				923B59752BB2138F00537676 /* UpcomingMoviesViewController.swift */,
 				923B59762BB2138F00537676 /* UpcomingMoviesViewController.xib */,
 			);
-			path = UpcomingMovies;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		923B598C2BB23A0F00537676 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		923B598D2BB23A6C00537676 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				923B59902BB23A8500537676 /* Protocols */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		923B59902BB23A8500537676 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				923B598E2BB23A7D00537676 /* Alertable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
