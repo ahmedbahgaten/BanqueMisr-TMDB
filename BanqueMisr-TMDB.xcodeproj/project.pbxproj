@@ -33,6 +33,10 @@
 		923B59802BB213A500537676 /* NowPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923B597E2BB213A500537676 /* NowPlayingViewController.xib */; };
 		923B59852BB220AE00537676 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59842BB220AE00537676 /* AppTabBarController.swift */; };
 		923B598F2BB23A7D00537676 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B598E2BB23A7D00537676 /* Alertable.swift */; };
+		923B59962BB23D8600537676 /* MovieResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59952BB23D8600537676 /* MovieResponseDTO.swift */; };
+		923B59982BB23E3E00537676 /* MovieRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59972BB23E3E00537676 /* MovieRequestDTO.swift */; };
+		923B599A2BB23E6B00537676 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59992BB23E6B00537676 /* Movie.swift */; };
+		923B599D2BB23F2B00537676 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B599C2BB23F2B00537676 /* Extension + String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,10 @@
 		923B597E2BB213A500537676 /* NowPlayingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowPlayingViewController.xib; sourceTree = "<group>"; };
 		923B59842BB220AE00537676 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 		923B598E2BB23A7D00537676 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		923B59952BB23D8600537676 /* MovieResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponseDTO.swift; sourceTree = "<group>"; };
+		923B59972BB23E3E00537676 /* MovieRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequestDTO.swift; sourceTree = "<group>"; };
+		923B59992BB23E6B00537676 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		923B599C2BB23F2B00537676 /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +146,8 @@
 				923B594E2BB1AC0800537676 /* Infrastructure */,
 				923B596A2BB209BB00537676 /* DIContainer */,
 				923B596F2BB2114C00537676 /* Presentation */,
+				923B59912BB23C2800537676 /* Domain */,
+				923B59932BB23C5A00537676 /* Data */,
 				923B59652BB1ED7100537676 /* Resources */,
 			);
 			path = "BanqueMisr-TMDB";
@@ -317,6 +327,7 @@
 		923B598D2BB23A6C00537676 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				923B599B2BB23F2200537676 /* Extensions */,
 				923B59902BB23A8500537676 /* Protocols */,
 			);
 			path = Utils;
@@ -328,6 +339,47 @@
 				923B598E2BB23A7D00537676 /* Alertable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		923B59912BB23C2800537676 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				923B59922BB23C3B00537676 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		923B59922BB23C3B00537676 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				923B59992BB23E6B00537676 /* Movie.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		923B59932BB23C5A00537676 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				923B59942BB23C6800537676 /* DTOs */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		923B59942BB23C6800537676 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				923B59952BB23D8600537676 /* MovieResponseDTO.swift */,
+				923B59972BB23E3E00537676 /* MovieRequestDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		923B599B2BB23F2200537676 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				923B599C2BB23F2B00537676 /* Extension + String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,14 +522,18 @@
 				923B59772BB2138F00537676 /* UpcomingMoviesViewController.swift in Sources */,
 				923B59532BB1AC7F00537676 /* DataTransferService.swift in Sources */,
 				923B59572BB1B3B700537676 /* DefaultSessionManager.swift in Sources */,
+				923B59962BB23D8600537676 /* MovieResponseDTO.swift in Sources */,
 				923B59512BB1AC3900537676 /* EndPoint.swift in Sources */,
 				923B59672BB2038400537676 /* AppConfigurations.swift in Sources */,
 				923B597F2BB213A500537676 /* NowPlayingViewController.swift in Sources */,
 				923B596E2BB20D0200537676 /* MoviesTabBarDIContainer.swift in Sources */,
 				923B597B2BB2139B00537676 /* PopularMoviesViewController.swift in Sources */,
 				923B59852BB220AE00537676 /* AppTabBarController.swift in Sources */,
+				923B599D2BB23F2B00537676 /* Extension + String.swift in Sources */,
+				923B599A2BB23E6B00537676 /* Movie.swift in Sources */,
 				923B59632BB1E54900537676 /* JsonResponseDecoder.swift in Sources */,
 				923B591D2BB12E9C00537676 /* AppDelegate.swift in Sources */,
+				923B59982BB23E3E00537676 /* MovieRequestDTO.swift in Sources */,
 				923B591F2BB12E9C00537676 /* SceneDelegate.swift in Sources */,
 				923B59612BB1E14D00537676 /* DataTransferError.swift in Sources */,
 				923B595D2BB1B7B900537676 /* NetworkConfig.swift in Sources */,
