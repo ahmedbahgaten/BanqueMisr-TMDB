@@ -23,9 +23,15 @@
 		923B59612BB1E14D00537676 /* DataTransferError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59602BB1E14D00537676 /* DataTransferError.swift */; };
 		923B59632BB1E54900537676 /* JsonResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59622BB1E54900537676 /* JsonResponseDecoder.swift */; };
 		923B59672BB2038400537676 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59662BB2038400537676 /* AppConfigurations.swift */; };
-		923B59692BB208DD00537676 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59682BB208DD00537676 /* AppCoordinator.swift */; };
 		923B596C2BB209C800537676 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B596B2BB209C800537676 /* AppDIContainer.swift */; };
 		923B596E2BB20D0200537676 /* MoviesTabBarDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B596D2BB20D0200537676 /* MoviesTabBarDIContainer.swift */; };
+		923B59772BB2138F00537676 /* UpcomingMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59752BB2138F00537676 /* UpcomingMoviesViewController.swift */; };
+		923B59782BB2138F00537676 /* UpcomingMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923B59762BB2138F00537676 /* UpcomingMoviesViewController.xib */; };
+		923B597B2BB2139B00537676 /* PopularMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59792BB2139B00537676 /* PopularMoviesViewController.swift */; };
+		923B597C2BB2139B00537676 /* PopularMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923B597A2BB2139B00537676 /* PopularMoviesViewController.xib */; };
+		923B597F2BB213A500537676 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B597D2BB213A500537676 /* NowPlayingViewController.swift */; };
+		923B59802BB213A500537676 /* NowPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923B597E2BB213A500537676 /* NowPlayingViewController.xib */; };
+		923B59852BB220AE00537676 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59842BB220AE00537676 /* AppTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +72,15 @@
 		923B59602BB1E14D00537676 /* DataTransferError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferError.swift; sourceTree = "<group>"; };
 		923B59622BB1E54900537676 /* JsonResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponseDecoder.swift; sourceTree = "<group>"; };
 		923B59662BB2038400537676 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
-		923B59682BB208DD00537676 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		923B596B2BB209C800537676 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		923B596D2BB20D0200537676 /* MoviesTabBarDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTabBarDIContainer.swift; sourceTree = "<group>"; };
+		923B59752BB2138F00537676 /* UpcomingMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesViewController.swift; sourceTree = "<group>"; };
+		923B59762BB2138F00537676 /* UpcomingMoviesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingMoviesViewController.xib; sourceTree = "<group>"; };
+		923B59792BB2139B00537676 /* PopularMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewController.swift; sourceTree = "<group>"; };
+		923B597A2BB2139B00537676 /* PopularMoviesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularMoviesViewController.xib; sourceTree = "<group>"; };
+		923B597D2BB213A500537676 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
+		923B597E2BB213A500537676 /* NowPlayingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowPlayingViewController.xib; sourceTree = "<group>"; };
+		923B59842BB220AE00537676 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +186,6 @@
 				923B591C2BB12E9C00537676 /* AppDelegate.swift */,
 				923B591E2BB12E9C00537676 /* SceneDelegate.swift */,
 				923B59662BB2038400537676 /* AppConfigurations.swift */,
-				923B59682BB208DD00537676 /* AppCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -210,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				923B59712BB2116200537676 /* Tabs */,
+				923B59842BB220AE00537676 /* AppTabBarController.swift */,
 			);
 			path = MoviesTabBar;
 			sourceTree = "<group>";
@@ -227,6 +239,8 @@
 		923B59722BB2117700537676 /* NowPlaying */ = {
 			isa = PBXGroup;
 			children = (
+				923B597D2BB213A500537676 /* NowPlayingViewController.swift */,
+				923B597E2BB213A500537676 /* NowPlayingViewController.xib */,
 			);
 			path = NowPlaying;
 			sourceTree = "<group>";
@@ -234,6 +248,8 @@
 		923B59732BB2117F00537676 /* Popular */ = {
 			isa = PBXGroup;
 			children = (
+				923B59792BB2139B00537676 /* PopularMoviesViewController.swift */,
+				923B597A2BB2139B00537676 /* PopularMoviesViewController.xib */,
 			);
 			path = Popular;
 			sourceTree = "<group>";
@@ -241,6 +257,8 @@
 		923B59742BB2118900537676 /* UpcomingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				923B59752BB2138F00537676 /* UpcomingMoviesViewController.swift */,
+				923B59762BB2138F00537676 /* UpcomingMoviesViewController.xib */,
 			);
 			path = UpcomingMovies;
 			sourceTree = "<group>";
@@ -349,6 +367,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923B59782BB2138F00537676 /* UpcomingMoviesViewController.xib in Resources */,
+				923B59802BB213A500537676 /* NowPlayingViewController.xib in Resources */,
+				923B597C2BB2139B00537676 /* PopularMoviesViewController.xib in Resources */,
 				923B59292BB12E9F00537676 /* LaunchScreen.storyboard in Resources */,
 				923B59262BB12E9F00537676 /* Assets.xcassets in Resources */,
 			);
@@ -377,13 +398,16 @@
 			files = (
 				923B596C2BB209C800537676 /* AppDIContainer.swift in Sources */,
 				923B59552BB1AE3000537676 /* DefaultNetwork.swift in Sources */,
-				923B59692BB208DD00537676 /* AppCoordinator.swift in Sources */,
 				923B595B2BB1B42200537676 /* NetworkError.swift in Sources */,
+				923B59772BB2138F00537676 /* UpcomingMoviesViewController.swift in Sources */,
 				923B59532BB1AC7F00537676 /* DataTransferService.swift in Sources */,
 				923B59572BB1B3B700537676 /* DefaultSessionManager.swift in Sources */,
 				923B59512BB1AC3900537676 /* EndPoint.swift in Sources */,
 				923B59672BB2038400537676 /* AppConfigurations.swift in Sources */,
+				923B597F2BB213A500537676 /* NowPlayingViewController.swift in Sources */,
 				923B596E2BB20D0200537676 /* MoviesTabBarDIContainer.swift in Sources */,
+				923B597B2BB2139B00537676 /* PopularMoviesViewController.swift in Sources */,
+				923B59852BB220AE00537676 /* AppTabBarController.swift in Sources */,
 				923B59632BB1E54900537676 /* JsonResponseDecoder.swift in Sources */,
 				923B591D2BB12E9C00537676 /* AppDelegate.swift in Sources */,
 				923B591F2BB12E9C00537676 /* SceneDelegate.swift in Sources */,

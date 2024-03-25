@@ -34,6 +34,10 @@ final class AppDIContainer {
   
     // MARK: - DIContainers of scenes
   func makeMoviesTabBarDIContainer() -> MoviesTabBarDIContainer {
-    return MoviesTabBarDIContainer()
+    let dependencies = MoviesTabBarDIContainer.Dependencies(
+      apiDataTransferService: apiDataTransferService,
+      imageDataTransferService: imageDataTransferService
+    )
+    return MoviesTabBarDIContainer(dependencies: dependencies)
   }
 }

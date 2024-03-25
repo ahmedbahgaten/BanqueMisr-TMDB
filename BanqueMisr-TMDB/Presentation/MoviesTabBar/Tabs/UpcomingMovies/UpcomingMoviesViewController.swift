@@ -8,8 +8,15 @@
 import UIKit
 
 class UpcomingMoviesViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+//    setupView()
+    view.backgroundColor = .gray
+  }
+  
+  private func setupView() {
+    tabBarItem.title = "Upcoming"
+    tabBarItem.image = UIImage(systemName: "arrow.down.circle.dotted")
+  }
 }

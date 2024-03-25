@@ -8,8 +8,15 @@
 import UIKit
 
 class PopularMoviesViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+//    setupView()
+    view.backgroundColor = .green
+  }
+  
+  private func setupView() {
+    tabBarItem.title = "Popular"
+    tabBarItem.image = UIImage(systemName: "play.circle")
+  }
 }
