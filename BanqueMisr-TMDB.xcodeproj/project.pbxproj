@@ -20,7 +20,6 @@
 		923B59572BB1B3B700537676 /* DefaultSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59562BB1B3B700537676 /* DefaultSessionManager.swift */; };
 		923B595B2BB1B42200537676 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B595A2BB1B42200537676 /* NetworkError.swift */; };
 		923B595D2BB1B7B900537676 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B595C2BB1B7B900537676 /* NetworkConfig.swift */; };
-		923B595F2BB1BD4A00537676 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B595E2BB1BD4A00537676 /* ViewController.swift */; };
 		923B59612BB1E14D00537676 /* DataTransferError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59602BB1E14D00537676 /* DataTransferError.swift */; };
 		923B59632BB1E54900537676 /* JsonResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59622BB1E54900537676 /* JsonResponseDecoder.swift */; };
 		923B59672BB2038400537676 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59662BB2038400537676 /* AppConfigurations.swift */; };
@@ -64,7 +63,6 @@
 		923B59562BB1B3B700537676 /* DefaultSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSessionManager.swift; sourceTree = "<group>"; };
 		923B595A2BB1B42200537676 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		923B595C2BB1B7B900537676 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
-		923B595E2BB1BD4A00537676 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		923B59602BB1E14D00537676 /* DataTransferError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferError.swift; sourceTree = "<group>"; };
 		923B59622BB1E54900537676 /* JsonResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponseDecoder.swift; sourceTree = "<group>"; };
 		923B59662BB2038400537676 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 				923B59652BB1ED7100537676 /* Resources */,
 				923B59642BB1ED6200537676 /* Application */,
 				923B594E2BB1AC0800537676 /* Infrastructure */,
-				923B595E2BB1BD4A00537676 /* ViewController.swift */,
 			);
 			path = "BanqueMisr-TMDB";
 			sourceTree = "<group>";
@@ -379,7 +376,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				923B596C2BB209C800537676 /* AppDIContainer.swift in Sources */,
-				923B595F2BB1BD4A00537676 /* ViewController.swift in Sources */,
 				923B59552BB1AE3000537676 /* DefaultNetwork.swift in Sources */,
 				923B59692BB208DD00537676 /* AppCoordinator.swift in Sources */,
 				923B595B2BB1B42200537676 /* NetworkError.swift in Sources */,
