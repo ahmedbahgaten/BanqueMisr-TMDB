@@ -13,10 +13,11 @@ protocol DataTransferService {
 
 final class DefaultDataTransferService {
   
+  //MARK: - Properties
   private let networkService: NetworkService
   private let errorResolver: DataTransferErrorResolver
   private let errorLogger: DataTransferErrorLogger
-  
+  //MARK: - Init
   init(
     with networkService: NetworkService,
     errorResolver: DataTransferErrorResolver = DefaultDataTransferErrorResolver(),
@@ -26,23 +27,7 @@ final class DefaultDataTransferService {
     self.errorResolver = errorResolver
     self.errorLogger = errorLogger
   }
-}
-
-extension DefaultDataTransferService: DataTransferService {
-  
-  func request<T: Decodable, E: ResponseRequestable>(
-    with endpoint: E) async throws -> T where E.Response == T {
-      do {
-        let responseData = try await networkService.request(endpoint: endpoint)
-        let decodedResponse: T = try self.decode(data: responseData,
-                                          decoder: endpoint.responseDecoder)
-        return decodedResponse
-      }catch {
-        self.errorLogger.log(error: error)
-        throw error
-      }
-    }
-  
+  //MARK: - Methods
   private func decode<T: Decodable>(
     data: Data?,
     decoder: ResponseDecoder
@@ -63,4 +48,20 @@ extension DefaultDataTransferService: DataTransferService {
     ? .networkFailure(error)
     : .resolvedNetworkFailure(resolvedError)
   }
+}
+
+extension DefaultDataTransferService: DataTransferService {
+  
+  func request<T: Decodable, E: ResponseRequestable>(
+    with endpoint: E) async throws -> T where E.Response == T {
+      do {
+        let responseData = try await networkService.request(endpoint: endpoint)
+        let decodedResponse: T = try self.decode(data: responseData,
+                                          decoder: endpoint.responseDecoder)
+        return decodedResponse
+      }catch {
+        self.errorLogger.log(error: error)
+        throw error
+      }
+    }
 }
