@@ -23,6 +23,7 @@
 		923B595F2BB1BD4A00537676 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B595E2BB1BD4A00537676 /* ViewController.swift */; };
 		923B59612BB1E14D00537676 /* DataTransferError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59602BB1E14D00537676 /* DataTransferError.swift */; };
 		923B59632BB1E54900537676 /* JsonResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59622BB1E54900537676 /* JsonResponseDecoder.swift */; };
+		923B59672BB2038400537676 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59662BB2038400537676 /* AppConfigurations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		923B595E2BB1BD4A00537676 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		923B59602BB1E14D00537676 /* DataTransferError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferError.swift; sourceTree = "<group>"; };
 		923B59622BB1E54900537676 /* JsonResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponseDecoder.swift; sourceTree = "<group>"; };
+		923B59662BB2038400537676 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				923B591C2BB12E9C00537676 /* AppDelegate.swift */,
 				923B591E2BB12E9C00537676 /* SceneDelegate.swift */,
+				923B59662BB2038400537676 /* AppConfigurations.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				923B59532BB1AC7F00537676 /* DataTransferService.swift in Sources */,
 				923B59572BB1B3B700537676 /* DefaultSessionManager.swift in Sources */,
 				923B59512BB1AC3900537676 /* EndPoint.swift in Sources */,
+				923B59672BB2038400537676 /* AppConfigurations.swift in Sources */,
 				923B59632BB1E54900537676 /* JsonResponseDecoder.swift in Sources */,
 				923B591D2BB12E9C00537676 /* AppDelegate.swift in Sources */,
 				923B591F2BB12E9C00537676 /* SceneDelegate.swift in Sources */,
@@ -490,12 +494,15 @@
 		923B59442BB12EA000537676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_BASE_URL = "http://api.themoviedb.org";
+				API_KEY = 0c5ca3673c651a2e3f0365c1529e8b63;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VY88YN52L7;
 				GENERATE_INFOPLIST_FILE = YES;
+				IMAGE_BASE_URL = "http://image.tmdb.org";
 				INFOPLIST_FILE = "BanqueMisr-TMDB/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -518,12 +525,15 @@
 		923B59452BB12EA000537676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_BASE_URL = "http://api.themoviedb.org";
+				API_KEY = 0c5ca3673c651a2e3f0365c1529e8b63;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VY88YN52L7;
 				GENERATE_INFOPLIST_FILE = YES;
+				IMAGE_BASE_URL = "http://image.tmdb.org";
 				INFOPLIST_FILE = "BanqueMisr-TMDB/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
