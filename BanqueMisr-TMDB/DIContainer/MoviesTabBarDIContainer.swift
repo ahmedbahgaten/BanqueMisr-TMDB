@@ -47,7 +47,7 @@ final class MoviesTabBarDIContainer {
 extension MoviesTabBarDIContainer:MoviesTabBarFlowCoordinatorDependencies {
   
   func makeNowPlayingMoviesViewController() -> UINavigationController {
-    let nowPlayingVC = NowPlayingViewController(viewModel: makeNowPlayingViewModel())
+    let nowPlayingVC = NowPlayingViewController(viewModel: makeNowPlayingViewModel(),fetchImageRepo: makeNowPlayingFetchImageRepo())
     setupTabBarView(controller: nowPlayingVC,
                     title: "Now Playing",
                     imageName: "play.circle")
@@ -79,5 +79,8 @@ extension MoviesTabBarDIContainer {
   }
   func makeNowPlayingMoviesRepository() -> MoviesRepository {
     DefaultMoviesRepository(dataTransferService: dependencies.apiDataTransferService)
+  }
+  func makeNowPlayingFetchImageRepo() -> FetchImageRepository {
+    DefaultFetchImageRepository(dataTransferService: dependencies.imageDataTransferService)
   }
 }

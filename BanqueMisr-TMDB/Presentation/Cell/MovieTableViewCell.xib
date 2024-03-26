@@ -10,33 +10,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="217" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="BanqueMisr_TMDB" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="217"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="498" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="BanqueMisr_TMDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="498"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="400" height="217"/>
+                <rect key="frame" x="0.0" y="0.0" width="400" height="498"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whV-kY-WuA">
-                        <rect key="frame" x="10" y="10" width="380" height="197"/>
+                        <rect key="frame" x="10" y="10" width="380" height="478"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YlJ-4N-iKV">
-                                <rect key="frame" x="10" y="9.9999999999999929" width="360" height="124.33333333333331"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YlJ-4N-iKV">
+                                <rect key="frame" x="10" y="10" width="360" height="400"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="124.33" id="MZw-DA-Zg3"/>
+                                    <constraint firstAttribute="height" constant="400" id="MZw-DA-Zg3"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="94M-Cv-U0g">
-                                <rect key="frame" x="10" y="144.33333333333334" width="87.666666666666671" height="17.333333333333343"/>
+                                <rect key="frame" x="10" y="420" width="87.666666666666671" height="17.666666666666686"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vac-3H-y6t">
-                                        <rect key="frame" x="0.0" y="0.0" width="36.333333333333336" height="17.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="36.333333333333336" height="17.666666666666668"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0t9-Mu-DHl">
-                                        <rect key="frame" x="46.333333333333329" y="0.0" width="41.333333333333329" height="17.333333333333332"/>
+                                        <rect key="frame" x="46.333333333333314" y="0.0" width="41.333333333333343" height="17.666666666666668"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sBW-ll-tyJ">
-                                <rect key="frame" x="10" y="171.66666666666666" width="161.33333333333334" height="20.333333333333343"/>
+                                <rect key="frame" x="10" y="447.66666666666669" width="161.33333333333334" height="20.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Release Date " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdL-l3-O56">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="20.333333333333332"/>
@@ -71,8 +71,9 @@
                             <constraint firstItem="YlJ-4N-iKV" firstAttribute="leading" secondItem="whV-kY-WuA" secondAttribute="leading" constant="10" id="JAv-ik-byF"/>
                             <constraint firstItem="sBW-ll-tyJ" firstAttribute="top" secondItem="94M-Cv-U0g" secondAttribute="bottom" constant="10" id="eYk-c0-aGd"/>
                             <constraint firstAttribute="trailing" secondItem="YlJ-4N-iKV" secondAttribute="trailing" constant="10" id="jeJ-XE-5gx"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="94M-Cv-U0g" secondAttribute="trailing" constant="10" id="npW-Ck-BnJ"/>
                             <constraint firstItem="94M-Cv-U0g" firstAttribute="leading" secondItem="YlJ-4N-iKV" secondAttribute="leading" id="u46-Gg-ZDT"/>
-                            <constraint firstAttribute="bottom" secondItem="sBW-ll-tyJ" secondAttribute="bottom" constant="5" id="xKe-he-Hz6"/>
+                            <constraint firstAttribute="bottom" secondItem="sBW-ll-tyJ" secondAttribute="bottom" constant="10" id="xKe-he-Hz6"/>
                             <constraint firstItem="YlJ-4N-iKV" firstAttribute="top" secondItem="whV-kY-WuA" secondAttribute="top" constant="10" id="y3c-oM-GtA"/>
                         </constraints>
                     </view>
@@ -91,7 +92,7 @@
                 <outlet property="movieTitleLbl" destination="0t9-Mu-DHl" id="U40-me-8fk"/>
                 <outlet property="releaseDateTitleLbl" destination="nTe-Re-FDj" id="bUb-k2-4Lf"/>
             </connections>
-            <point key="canvasLocation" x="180.15267175572518" y="79.225352112676063"/>
+            <point key="canvasLocation" x="180.15267175572518" y="178.16901408450704"/>
         </tableViewCell>
     </objects>
     <resources>

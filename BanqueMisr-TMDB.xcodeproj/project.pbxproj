@@ -45,6 +45,10 @@
 		923B59B02BB3364A00537676 /* MovieListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59AF2BB3364A00537676 /* MovieListItemViewModel.swift */; };
 		923B59BB2BB3539200537676 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59B92BB3539200537676 /* MovieTableViewCell.swift */; };
 		923B59BC2BB3539200537676 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923B59BA2BB3539200537676 /* MovieTableViewCell.xib */; };
+		923B59C12BB3613600537676 /* FetchImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59C02BB3613600537676 /* FetchImageRepository.swift */; };
+		923B59C32BB3619400537676 /* DefaultFetchImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59C22BB3619400537676 /* DefaultFetchImageRepository.swift */; };
+		923B59C52BB361F700537676 /* DataResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59C42BB361F700537676 /* DataResponseDecoder.swift */; };
+		923B59C82BB3759600537676 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59C72BB3759600537676 /* ImageCacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +111,10 @@
 		923B59AF2BB3364A00537676 /* MovieListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListItemViewModel.swift; sourceTree = "<group>"; };
 		923B59B92BB3539200537676 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		923B59BA2BB3539200537676 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		923B59C02BB3613600537676 /* FetchImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageRepository.swift; sourceTree = "<group>"; };
+		923B59C22BB3619400537676 /* DefaultFetchImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFetchImageRepository.swift; sourceTree = "<group>"; };
+		923B59C42BB361F700537676 /* DataResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponseDecoder.swift; sourceTree = "<group>"; };
+		923B59C72BB3759600537676 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +213,7 @@
 				923B595C2BB1B7B900537676 /* NetworkConfig.swift */,
 				923B59562BB1B3B700537676 /* DefaultSessionManager.swift */,
 				923B59622BB1E54900537676 /* JsonResponseDecoder.swift */,
+				923B59C42BB361F700537676 /* DataResponseDecoder.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -346,6 +355,7 @@
 		923B598D2BB23A6C00537676 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				923B59C62BB3758B00537676 /* Helpers */,
 				923B599B2BB23F2200537676 /* Extensions */,
 				923B59902BB23A8500537676 /* Protocols */,
 			);
@@ -417,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				923B59A02BB241F100537676 /* MoviesRepository.swift */,
+				923B59C02BB3613600537676 /* FetchImageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -425,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				923B59A52BB2457300537676 /* DefaultMoviesRepository.swift */,
+				923B59C22BB3619400537676 /* DefaultFetchImageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -452,6 +464,14 @@
 				923B59BA2BB3539200537676 /* MovieTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		923B59C62BB3758B00537676 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				923B59C72BB3759600537676 /* ImageCacheManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -604,14 +624,18 @@
 				923B59672BB2038400537676 /* AppConfigurations.swift in Sources */,
 				923B59AE2BB26E7700537676 /* NowPlayingViewModel.swift in Sources */,
 				923B597F2BB213A500537676 /* NowPlayingViewController.swift in Sources */,
+				923B59C12BB3613600537676 /* FetchImageRepository.swift in Sources */,
 				923B596E2BB20D0200537676 /* MoviesTabBarDIContainer.swift in Sources */,
 				923B59B02BB3364A00537676 /* MovieListItemViewModel.swift in Sources */,
+				923B59C52BB361F700537676 /* DataResponseDecoder.swift in Sources */,
+				923B59C82BB3759600537676 /* ImageCacheManager.swift in Sources */,
 				923B597B2BB2139B00537676 /* PopularMoviesViewController.swift in Sources */,
 				923B59BB2BB3539200537676 /* MovieTableViewCell.swift in Sources */,
 				923B59852BB220AE00537676 /* AppTabBarController.swift in Sources */,
 				923B599D2BB23F2B00537676 /* Extension + String.swift in Sources */,
 				923B599A2BB23E6B00537676 /* Movie.swift in Sources */,
 				923B59632BB1E54900537676 /* JsonResponseDecoder.swift in Sources */,
+				923B59C32BB3619400537676 /* DefaultFetchImageRepository.swift in Sources */,
 				923B591D2BB12E9C00537676 /* AppDelegate.swift in Sources */,
 				923B59982BB23E3E00537676 /* MovieRequestDTO.swift in Sources */,
 				923B591F2BB12E9C00537676 /* SceneDelegate.swift in Sources */,

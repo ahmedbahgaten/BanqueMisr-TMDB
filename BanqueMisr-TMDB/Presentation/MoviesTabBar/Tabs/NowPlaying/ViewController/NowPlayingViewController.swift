@@ -10,15 +10,17 @@ import Combine
 
 final class NowPlayingViewController: UIViewController {
   //MARK: - Properties
-  private var viewModel:NowPlayingViewModel
+  private let viewModel:NowPlayingViewModel
+  private let fetchImageRepository:FetchImageRepository
   private var subscriptions = Set<AnyCancellable>()
   private let refreshControl = UIRefreshControl()
   private var dataSource:UITableViewDiffableDataSource<Int,MovieListItemViewModel>!
   //MARK: - Outlets
   @IBOutlet private weak var tableView: UITableView!
   //MARK: - Init
-  init(viewModel: NowPlayingViewModel) {
+  init(viewModel: NowPlayingViewModel,fetchImageRepo:FetchImageRepository) {
     self.viewModel = viewModel
+    self.fetchImageRepository = fetchImageRepo
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -47,16 +49,19 @@ final class NowPlayingViewController: UIViewController {
   
   private func setupTableView() {
     tableView.delegate = self
-    let nib = UINib(nibName: "MovieTableViewCell", bundle: nil)
+    let nib = UINib(nibName: MovieTableViewCell.reuseIdentifier,
+                    bundle: nil)
     tableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.reuseIdentifier)
     tableView.refreshControl = refreshControl
   }
   
   private func setupDataSource() {
-    dataSource = .init(tableView: tableView, cellProvider: { tableView, indexPath, movie in
+    dataSource = .init(tableView: tableView, cellProvider: { [weak self] tableView, indexPath, movie in
+      guard let self = self else { return UITableViewCell() }
       let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.reuseIdentifier,
                                                for: indexPath) as! MovieTableViewCell
-      cell.setupCell(listItem: movie)
+      cell.setupCell(listItem: movie,
+                     fetchImageRepo: self.fetchImageRepository)
       return cell
     })
   }
