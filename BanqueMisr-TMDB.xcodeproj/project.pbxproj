@@ -39,6 +39,7 @@
 		923B599D2BB23F2B00537676 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B599C2BB23F2B00537676 /* Extension + String.swift */; };
 		923B59A12BB241F100537676 /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59A02BB241F100537676 /* MoviesRepository.swift */; };
 		923B59A62BB2457300537676 /* DefaultMoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59A52BB2457300537676 /* DefaultMoviesRepository.swift */; };
+		923B59A92BB2470B00537676 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59A82BB2470B00537676 /* APIEndpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		923B599C2BB23F2B00537676 /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 		923B59A02BB241F100537676 /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
 		923B59A52BB2457300537676 /* DefaultMoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMoviesRepository.swift; sourceTree = "<group>"; };
+		923B59A82BB2470B00537676 /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +367,7 @@
 		923B59932BB23C5A00537676 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				923B59A72BB2470000537676 /* Network */,
 				923B59A42BB2456100537676 /* Repositories */,
 				923B59942BB23C6800537676 /* DTOs */,
 			);
@@ -410,6 +413,14 @@
 				923B59A52BB2457300537676 /* DefaultMoviesRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		923B59A72BB2470000537676 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				923B59A82BB2470B00537676 /* APIEndpoints.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -545,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923B59A92BB2470B00537676 /* APIEndpoints.swift in Sources */,
 				923B598F2BB23A7D00537676 /* Alertable.swift in Sources */,
 				923B596C2BB209C800537676 /* AppDIContainer.swift in Sources */,
 				923B59A12BB241F100537676 /* MoviesRepository.swift in Sources */,
