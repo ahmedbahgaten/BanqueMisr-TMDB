@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol NowPlayingViewModelInputs {
-  func fetchMoviesList(loading:MoviesListViewModelLoading) async throws -> [NowPlayingListItemViewModel]
-  func didLoadNextPage() async throws -> [NowPlayingListItemViewModel]
+  func fetchMoviesList(loading:MoviesListViewModelLoading) async throws -> [MovieListItemViewModel]
+  func didLoadNextPage() async throws -> [MovieListItemViewModel]
   func didSelectItem(at index: Int)
 }
 
@@ -59,7 +59,7 @@ final class DefaultNowPlayingViewModel:NowPlayingViewModel {
 //MARK: - Inputs
 extension DefaultNowPlayingViewModel {
   
-  func fetchMoviesList(loading:MoviesListViewModelLoading) async throws -> [NowPlayingListItemViewModel] {
+  func fetchMoviesList(loading:MoviesListViewModelLoading) async throws -> [MovieListItemViewModel] {
     self.loading.send(loading)
     self.isCurrentlyFetching = true
     let moviesList = try await moviesListUseCase.execute(for: .nowPlaying,
@@ -67,12 +67,12 @@ extension DefaultNowPlayingViewModel {
     self.appendPage(moviesList)
     self.loading.send(.none)
     self.isCurrentlyFetching = false
-    return pages.movies.map(NowPlayingListItemViewModel.init)
+    return pages.movies.map(MovieListItemViewModel.init)
   }
   
-  func didLoadNextPage() async throws -> [NowPlayingListItemViewModel] {
+  func didLoadNextPage() async throws -> [MovieListItemViewModel] {
     guard hasMorePages, !isCurrentlyFetching else {
-      return pages.movies.map(NowPlayingListItemViewModel.init)
+      return pages.movies.map(MovieListItemViewModel.init)
     }
     return try await fetchMoviesList(loading: .nextPage)
   }
