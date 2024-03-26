@@ -16,7 +16,13 @@ final class DefaultMoviesRepository {
 }
 
 extension DefaultMoviesRepository:MoviesRepository {
-  func getRemoteMoviesList(page: Int) async throws -> MoviesPage {
-    return MoviesPage(page: 0, totalPages: 0, movies: [])
+  func getRemoteMoviesList(for category:APIEndpoints.MoviesCategoryPath,
+                           page: Int) async throws -> MoviesPage {
+    let requestDTO = MoviesRequestDTO(page: page)
+    let endpoint = APIEndpoints.getMovies(category: category,
+                                          with: requestDTO)
+    let responseDTO = try await self.dataTransferService.request(with: endpoint)
+    return responseDTO.toDomain()
+    
   }
 }
