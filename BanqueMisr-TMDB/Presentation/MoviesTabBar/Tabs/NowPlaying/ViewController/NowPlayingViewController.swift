@@ -13,7 +13,7 @@ final class NowPlayingViewController: UIViewController {
   private var viewModel:NowPlayingViewModel
   private var subscriptions = Set<AnyCancellable>()
   private let refreshControl = UIRefreshControl()
-  private var dataSource:UITableViewDiffableDataSource<Int,NowPlayingListItemViewModel>!
+  private var dataSource:UITableViewDiffableDataSource<Int,MovieListItemViewModel>!
   //MARK: - Outlets
   @IBOutlet private weak var tableView: UITableView!
   //MARK: - Init
@@ -30,7 +30,9 @@ final class NowPlayingViewController: UIViewController {
     super.viewDidLoad()
     setupView()
     setupBinding()
-    setupCollectionView()
+    setupTableView()
+    setupDataSource()
+    refreshApps([])
   }
   
   //MARK: - Methods
@@ -43,9 +45,20 @@ final class NowPlayingViewController: UIViewController {
       .store(in: &subscriptions)
   }
   
-  private func setupCollectionView() {
+  private func setupTableView() {
     tableView.delegate = self
+    let nib = UINib(nibName: "MovieTableViewCell", bundle: nil)
+    tableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.reuseIdentifier)
     tableView.refreshControl = refreshControl
+  }
+  
+  private func setupDataSource() {
+    dataSource = .init(tableView: tableView, cellProvider: { tableView, indexPath, movie in
+      let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.reuseIdentifier,
+                                               for: indexPath) as! MovieTableViewCell
+      cell.setupCell(listItem: movie)
+      return cell
+    })
   }
   
   private func setupRefreshControl() {
@@ -60,8 +73,8 @@ final class NowPlayingViewController: UIViewController {
     loadMovies()
   }
   
-  private func reload(with data: [NowPlayingListItemViewModel]) {
-    var snapshot = NSDiffableDataSourceSnapshot<Int, NowPlayingListItemViewModel>()
+  private func reload(with data: [MovieListItemViewModel]) {
+    var snapshot = NSDiffableDataSourceSnapshot<Int, MovieListItemViewModel>()
     snapshot.appendSections([0])
     snapshot.appendItems(data)
     dataSource.apply(snapshot)
