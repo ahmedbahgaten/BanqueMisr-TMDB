@@ -22,7 +22,7 @@ extension MovieListItemViewModel {
     if let releaseDate = movie.releaseDate {
       self.releaseDate = dateFormatter.string(from: releaseDate)
     } else {
-      self.releaseDate = NSLocalizedString("To be announced", comment: "")
+      self.releaseDate = "To be announced"
     }
   }
 }
