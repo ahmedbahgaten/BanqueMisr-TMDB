@@ -11,6 +11,7 @@ import Combine
 final class NowPlayingViewController: UIViewController {
     //MARK: - Properties
   private let moviesListTableViewController:MoviesListTableViewController
+  private var coordinator:Coordinator?
     //MARK: - Outlets
   @IBOutlet private weak var containerView: UIView!
     //MARK: - Init
@@ -30,5 +31,9 @@ final class NowPlayingViewController: UIViewController {
   
   func navigateToMovieDetails(movieID:String) {
     
+  }
+  
+  func setCoordinator(_ coordinator:Coordinator) {
+    self.coordinator = coordinator
   }
 }

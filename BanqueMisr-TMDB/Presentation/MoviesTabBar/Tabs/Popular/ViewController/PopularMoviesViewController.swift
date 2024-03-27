@@ -10,6 +10,7 @@ import UIKit
 class PopularMoviesViewController: UIViewController {
   //MARK: - Properties
   private let moviesListTableViewController:MoviesListTableViewController
+  private var coordinator:Coordinator?
   //MARK: - Outlets
   @IBOutlet private weak var containerView: UIView!
   //MARK: - Init
@@ -25,5 +26,9 @@ class PopularMoviesViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     addChildVC(moviesListTableViewController, into: containerView)
+  }
+  
+  func setCoordinator(_ coordinator:Coordinator) {
+    self.coordinator = coordinator
   }
 }
