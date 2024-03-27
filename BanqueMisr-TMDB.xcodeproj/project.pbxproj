@@ -49,7 +49,13 @@
 		923B59C32BB3619400537676 /* DefaultFetchImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59C22BB3619400537676 /* DefaultFetchImageRepository.swift */; };
 		923B59C52BB361F700537676 /* DataResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59C42BB361F700537676 /* DataResponseDecoder.swift */; };
 		923B59C82BB3759600537676 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59C72BB3759600537676 /* ImageCacheManager.swift */; };
+		923B59CA2BB3C2AC00537676 /* Extension + UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59C92BB3C2AB00537676 /* Extension + UITableView.swift */; };
+		923B59CD2BB3C45400537676 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59CC2BB3C45400537676 /* LoadingView.swift */; };
+		92B8A6012BB4894C00F20F73 /* MoviesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A5FF2BB4894C00F20F73 /* MoviesListTableViewController.swift */; };
+		92B8A6022BB4894C00F20F73 /* MoviesListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B8A6002BB4894C00F20F73 /* MoviesListTableViewController.xib */; };
+		92B8A6042BB4898700F20F73 /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6032BB4898700F20F73 /* MoviesListViewModel.swift */; };
 		92B8A6062BB4969100F20F73 /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6052BB4969100F20F73 /* Extension + UIViewController.swift */; };
+		92B8A6092BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6082BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +122,13 @@
 		923B59C22BB3619400537676 /* DefaultFetchImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFetchImageRepository.swift; sourceTree = "<group>"; };
 		923B59C42BB361F700537676 /* DataResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponseDecoder.swift; sourceTree = "<group>"; };
 		923B59C72BB3759600537676 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		923B59C92BB3C2AB00537676 /* Extension + UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITableView.swift"; sourceTree = "<group>"; };
+		923B59CC2BB3C45400537676 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		92B8A5FF2BB4894C00F20F73 /* MoviesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListTableViewController.swift; sourceTree = "<group>"; };
+		92B8A6002BB4894C00F20F73 /* MoviesListTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesListTableViewController.xib; sourceTree = "<group>"; };
+		92B8A6032BB4898700F20F73 /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		92B8A6052BB4969100F20F73 /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
+		92B8A6082BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListTableViewCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +273,7 @@
 		923B59702BB2115200537676 /* MoviesTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				92B8A5FC2BB4890800F20F73 /* MoviesListTableViewController */,
 				923B59712BB2116200537676 /* Tabs */,
 				923B59842BB220AE00537676 /* AppTabBarController.swift */,
 			);
@@ -357,6 +370,7 @@
 		923B598D2BB23A6C00537676 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				923B59CB2BB3C44800537676 /* CustomClasses */,
 				923B59C62BB3758B00537676 /* Helpers */,
 				923B599B2BB23F2200537676 /* Extensions */,
 				923B59902BB23A8500537676 /* Protocols */,
@@ -413,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				923B599C2BB23F2B00537676 /* Extension + String.swift */,
+				923B59C92BB3C2AB00537676 /* Extension + UITableView.swift */,
 				92B8A6052BB4969100F20F73 /* Extension + UIViewController.swift */,
 			);
 			path = Extensions;
@@ -475,6 +490,49 @@
 				923B59C72BB3759600537676 /* ImageCacheManager.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		923B59CB2BB3C44800537676 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				923B59CC2BB3C45400537676 /* LoadingView.swift */,
+			);
+			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		92B8A5FC2BB4890800F20F73 /* MoviesListTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				92B8A6072BB4A34800F20F73 /* Coordinator */,
+				92B8A5FE2BB4893400F20F73 /* ViewModel */,
+				92B8A5FD2BB4892200F20F73 /* TableView */,
+			);
+			path = MoviesListTableViewController;
+			sourceTree = "<group>";
+		};
+		92B8A5FD2BB4892200F20F73 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				92B8A5FF2BB4894C00F20F73 /* MoviesListTableViewController.swift */,
+				92B8A6002BB4894C00F20F73 /* MoviesListTableViewController.xib */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		92B8A5FE2BB4893400F20F73 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				92B8A6032BB4898700F20F73 /* MoviesListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		92B8A6072BB4A34800F20F73 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				92B8A6082BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -585,6 +643,7 @@
 				923B59802BB213A500537676 /* NowPlayingViewController.xib in Resources */,
 				923B59BC2BB3539200537676 /* MovieTableViewCell.xib in Resources */,
 				923B597C2BB2139B00537676 /* PopularMoviesViewController.xib in Resources */,
+				92B8A6022BB4894C00F20F73 /* MoviesListTableViewController.xib in Resources */,
 				923B59292BB12E9F00537676 /* LaunchScreen.storyboard in Resources */,
 				923B59262BB12E9F00537676 /* Assets.xcassets in Resources */,
 			);
@@ -612,6 +671,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				923B59AC2BB24BBF00537676 /* MoviesListUseCase.swift in Sources */,
+				92B8A6092BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift in Sources */,
+				923B59CA2BB3C2AC00537676 /* Extension + UITableView.swift in Sources */,
 				923B59A92BB2470B00537676 /* APIEndpoints.swift in Sources */,
 				923B598F2BB23A7D00537676 /* Alertable.swift in Sources */,
 				923B596C2BB209C800537676 /* AppDIContainer.swift in Sources */,
@@ -626,6 +687,8 @@
 				923B59512BB1AC3900537676 /* EndPoint.swift in Sources */,
 				923B59672BB2038400537676 /* AppConfigurations.swift in Sources */,
 				923B59AE2BB26E7700537676 /* NowPlayingViewModel.swift in Sources */,
+				92B8A6062BB4969100F20F73 /* Extension + UIViewController.swift in Sources */,
+				92B8A6012BB4894C00F20F73 /* MoviesListTableViewController.swift in Sources */,
 				923B597F2BB213A500537676 /* NowPlayingViewController.swift in Sources */,
 				923B59C12BB3613600537676 /* FetchImageRepository.swift in Sources */,
 				923B596E2BB20D0200537676 /* MoviesTabBarDIContainer.swift in Sources */,
@@ -641,8 +704,10 @@
 				923B59C32BB3619400537676 /* DefaultFetchImageRepository.swift in Sources */,
 				923B591D2BB12E9C00537676 /* AppDelegate.swift in Sources */,
 				923B59982BB23E3E00537676 /* MovieRequestDTO.swift in Sources */,
+				92B8A6042BB4898700F20F73 /* MoviesListViewModel.swift in Sources */,
 				923B591F2BB12E9C00537676 /* SceneDelegate.swift in Sources */,
 				923B59612BB1E14D00537676 /* DataTransferError.swift in Sources */,
+				923B59CD2BB3C45400537676 /* LoadingView.swift in Sources */,
 				923B595D2BB1B7B900537676 /* NetworkConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
