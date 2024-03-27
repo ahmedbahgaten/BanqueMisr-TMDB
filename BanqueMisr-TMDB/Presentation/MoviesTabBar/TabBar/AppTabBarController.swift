@@ -21,8 +21,7 @@ class AppTabBarController: OldTabBarStyle {
   }
   
   override func viewDidLoad() {
-    super.viewDidLoad()
-    setViewControllers(coordinator.map { $0.navigationController } , animated: true)
+    super.viewDidLoad()    
   }
 }
 
@@ -41,4 +40,6 @@ class OldTabBarStyle:UITabBarController {
       UITabBar.appearance().scrollEdgeAppearance = UITabBar.appearance().standardAppearance
     }
   }
+  
+  
 }
