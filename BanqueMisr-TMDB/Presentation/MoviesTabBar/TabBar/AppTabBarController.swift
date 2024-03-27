@@ -9,10 +9,10 @@ import UIKit
 
 class AppTabBarController: OldTabBarStyle {
   
-  private let controllers:[UINavigationController]
+  let coordinator:[Coordinator]
   
-  init(viewControllers:[UINavigationController]) {
-    self.controllers = viewControllers
+  init(coordinator:[Coordinator]) {
+    self.coordinator = coordinator
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -22,7 +22,7 @@ class AppTabBarController: OldTabBarStyle {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setViewControllers(controllers, animated: true)
+    setViewControllers(coordinator.map { $0.navigationController } , animated: true)
   }
 }
 
