@@ -55,7 +55,11 @@
 		92B8A6022BB4894C00F20F73 /* MoviesListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B8A6002BB4894C00F20F73 /* MoviesListTableViewController.xib */; };
 		92B8A6042BB4898700F20F73 /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6032BB4898700F20F73 /* MoviesListViewModel.swift */; };
 		92B8A6062BB4969100F20F73 /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6052BB4969100F20F73 /* Extension + UIViewController.swift */; };
-		92B8A6092BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6082BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift */; };
+		92B8A60E2BB4CAAC00F20F73 /* NowPlayingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A60D2BB4CAAC00F20F73 /* NowPlayingCoordinator.swift */; };
+		92B8A6112BB4CAD900F20F73 /* PopularCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6102BB4CAD900F20F73 /* PopularCoordinator.swift */; };
+		92B8A6142BB4CAEA00F20F73 /* UpcomingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6132BB4CAEA00F20F73 /* UpcomingCoordinator.swift */; };
+		92B8A6182BB4CB2A00F20F73 /* AppTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6172BB4CB2A00F20F73 /* AppTabBarCoordinator.swift */; };
+		92B8A61B2BB4CB4800F20F73 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A61A2BB4CB4800F20F73 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,7 +132,11 @@
 		92B8A6002BB4894C00F20F73 /* MoviesListTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesListTableViewController.xib; sourceTree = "<group>"; };
 		92B8A6032BB4898700F20F73 /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		92B8A6052BB4969100F20F73 /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
-		92B8A6082BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListTableViewCoordinator.swift; sourceTree = "<group>"; };
+		92B8A60D2BB4CAAC00F20F73 /* NowPlayingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCoordinator.swift; sourceTree = "<group>"; };
+		92B8A6102BB4CAD900F20F73 /* PopularCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCoordinator.swift; sourceTree = "<group>"; };
+		92B8A6132BB4CAEA00F20F73 /* UpcomingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCoordinator.swift; sourceTree = "<group>"; };
+		92B8A6172BB4CB2A00F20F73 /* AppTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarCoordinator.swift; sourceTree = "<group>"; };
+		92B8A61A2BB4CB4800F20F73 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +187,7 @@
 		923B591B2BB12E9C00537676 /* BanqueMisr-TMDB */ = {
 			isa = PBXGroup;
 			children = (
+				92B8A6192BB4CB3200F20F73 /* Coordinator */,
 				923B598D2BB23A6C00537676 /* Utils */,
 				923B59642BB1ED6200537676 /* Application */,
 				923B594E2BB1AC0800537676 /* Infrastructure */,
@@ -273,9 +282,9 @@
 		923B59702BB2115200537676 /* MoviesTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				92B8A6152BB4CAFF00F20F73 /* TabBar */,
 				92B8A5FC2BB4890800F20F73 /* MoviesListTableViewController */,
 				923B59712BB2116200537676 /* Tabs */,
-				923B59842BB220AE00537676 /* AppTabBarController.swift */,
 			);
 			path = MoviesTabBar;
 			sourceTree = "<group>";
@@ -293,6 +302,7 @@
 		923B59722BB2117700537676 /* NowPlaying */ = {
 			isa = PBXGroup;
 			children = (
+				92B8A60C2BB4CAA100F20F73 /* Coordinator */,
 				923B59882BB239F400537676 /* ViewModel */,
 				923B59872BB239DF00537676 /* ViewController */,
 			);
@@ -302,6 +312,7 @@
 		923B59732BB2117F00537676 /* Popular */ = {
 			isa = PBXGroup;
 			children = (
+				92B8A60F2BB4CACE00F20F73 /* Coordinator */,
 				923B598A2BB23A0100537676 /* ViewModel */,
 				923B59892BB239FA00537676 /* ViewController */,
 			);
@@ -311,6 +322,7 @@
 		923B59742BB2118900537676 /* UpcomingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				92B8A6122BB4CAE100F20F73 /* Coordinator */,
 				923B598C2BB23A0F00537676 /* ViewModel */,
 				923B598B2BB23A0900537676 /* ViewController */,
 			);
@@ -503,7 +515,6 @@
 		92B8A5FC2BB4890800F20F73 /* MoviesListTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				92B8A6072BB4A34800F20F73 /* Coordinator */,
 				92B8A5FE2BB4893400F20F73 /* ViewModel */,
 				92B8A5FD2BB4892200F20F73 /* TableView */,
 			);
@@ -527,10 +538,51 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		92B8A6072BB4A34800F20F73 /* Coordinator */ = {
+		92B8A60C2BB4CAA100F20F73 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				92B8A6082BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift */,
+				92B8A60D2BB4CAAC00F20F73 /* NowPlayingCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		92B8A60F2BB4CACE00F20F73 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				92B8A6102BB4CAD900F20F73 /* PopularCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		92B8A6122BB4CAE100F20F73 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				92B8A6132BB4CAEA00F20F73 /* UpcomingCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		92B8A6152BB4CAFF00F20F73 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				92B8A6162BB4CB1300F20F73 /* Coordinator */,
+				923B59842BB220AE00537676 /* AppTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		92B8A6162BB4CB1300F20F73 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				92B8A6172BB4CB2A00F20F73 /* AppTabBarCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		92B8A6192BB4CB3200F20F73 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				92B8A61A2BB4CB4800F20F73 /* Coordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -670,15 +722,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92B8A60E2BB4CAAC00F20F73 /* NowPlayingCoordinator.swift in Sources */,
 				923B59AC2BB24BBF00537676 /* MoviesListUseCase.swift in Sources */,
-				92B8A6092BB4A35600F20F73 /* MoviesListTableViewCoordinator.swift in Sources */,
 				923B59CA2BB3C2AC00537676 /* Extension + UITableView.swift in Sources */,
 				923B59A92BB2470B00537676 /* APIEndpoints.swift in Sources */,
 				923B598F2BB23A7D00537676 /* Alertable.swift in Sources */,
+				92B8A61B2BB4CB4800F20F73 /* Coordinator.swift in Sources */,
 				923B596C2BB209C800537676 /* AppDIContainer.swift in Sources */,
+				92B8A6142BB4CAEA00F20F73 /* UpcomingCoordinator.swift in Sources */,
 				923B59A12BB241F100537676 /* MoviesRepository.swift in Sources */,
 				923B59552BB1AE3000537676 /* DefaultNetwork.swift in Sources */,
 				923B595B2BB1B42200537676 /* NetworkError.swift in Sources */,
+				92B8A6182BB4CB2A00F20F73 /* AppTabBarCoordinator.swift in Sources */,
 				923B59772BB2138F00537676 /* UpcomingMoviesViewController.swift in Sources */,
 				923B59A62BB2457300537676 /* DefaultMoviesRepository.swift in Sources */,
 				923B59532BB1AC7F00537676 /* DataTransferService.swift in Sources */,
@@ -688,6 +743,7 @@
 				923B59672BB2038400537676 /* AppConfigurations.swift in Sources */,
 				923B59AE2BB26E7700537676 /* NowPlayingViewModel.swift in Sources */,
 				92B8A6062BB4969100F20F73 /* Extension + UIViewController.swift in Sources */,
+				92B8A6112BB4CAD900F20F73 /* PopularCoordinator.swift in Sources */,
 				92B8A6012BB4894C00F20F73 /* MoviesListTableViewController.swift in Sources */,
 				923B597F2BB213A500537676 /* NowPlayingViewController.swift in Sources */,
 				923B59C12BB3613600537676 /* FetchImageRepository.swift in Sources */,
