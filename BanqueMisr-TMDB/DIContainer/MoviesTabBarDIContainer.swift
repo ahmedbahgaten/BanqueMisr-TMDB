@@ -47,7 +47,8 @@ final class MoviesTabBarDIContainer {
 extension MoviesTabBarDIContainer:MoviesTabBarFlowCoordinatorDependencies {
   
   func makeNowPlayingMoviesViewController() -> UINavigationController {
-    let nowPlayingVC = NowPlayingViewController(viewModel: makeNowPlayingViewModel(),fetchImageRepo: makeNowPlayingFetchImageRepo())
+    let tableViewController = makeMoviesListTableViewController(for: .nowPlaying)
+    let nowPlayingVC = NowPlayingViewController(moviesListTableViewController: tableViewController)
     setupTabBarView(controller: nowPlayingVC,
                     title: "Now Playing",
                     imageName: "play.circle")
@@ -55,7 +56,8 @@ extension MoviesTabBarDIContainer:MoviesTabBarFlowCoordinatorDependencies {
   }
   
   func makePopularMoviesViewController() -> UINavigationController {
-    let popularMoviesVC = PopularMoviesViewController()
+    let tableViewController = makeMoviesListTableViewController(for: .popular)
+    let popularMoviesVC = PopularMoviesViewController(moviesListTableViewController: tableViewController)
     setupTabBarView(controller: popularMoviesVC,
                     title: "Popular",
                     imageName: "chart.line.uptrend.xyaxis.circle")
@@ -63,7 +65,8 @@ extension MoviesTabBarDIContainer:MoviesTabBarFlowCoordinatorDependencies {
   }
   
   func makeUpcomingMoviesViewController() -> UINavigationController {
-    let upcomingMoviesVC = UpcomingMoviesViewController()
+    let tableViewController = makeMoviesListTableViewController(for: .upcoming)
+    let upcomingMoviesVC = UpcomingMoviesViewController(moviesListTableViewController: tableViewController)
     setupTabBarView(controller: upcomingMoviesVC,
                     title: "Upcoming",
                     imageName: "arrow.down.circle.dotted")
@@ -71,16 +74,23 @@ extension MoviesTabBarDIContainer:MoviesTabBarFlowCoordinatorDependencies {
   }
 }
 extension MoviesTabBarDIContainer {
-  func makeNowPlayingViewModel() -> NowPlayingViewModel {
-    DefaultNowPlayingViewModel(moviesListUseCase: makeNowPlayingUseCase())
+  func makeMoviesListTableViewController(for moviesType:APIEndpoints.MoviesCategoryPath) -> MoviesListTableViewController {
+    let viewModel = makeMoviesListViewModel(for: moviesType)
+    let fetchImgRepo = makeMoviesListFetchImageRepo()
+    return MoviesListTableViewController(viewModel: viewModel,
+                                         fetchImageRepository: fetchImgRepo)
   }
-  func makeNowPlayingUseCase() -> MoviesListUseCase {
-    DefaultMoviesListUseCase(moviesRepository: makeNowPlayingMoviesRepository())
+  func makeMoviesListViewModel(for moviesType:APIEndpoints.MoviesCategoryPath) -> MoviesListViewModel {
+    DefaultMoviesListViewModel(moviesListUseCase: makeMoviesListUseCase(),
+                               moviesType: moviesType)
   }
-  func makeNowPlayingMoviesRepository() -> MoviesRepository {
+  func makeMoviesListUseCase() -> MoviesListUseCase {
+    DefaultMoviesListUseCase(moviesRepository: makeMoviesListRepository())
+  }
+  func makeMoviesListRepository() -> MoviesRepository {
     DefaultMoviesRepository(dataTransferService: dependencies.apiDataTransferService)
   }
-  func makeNowPlayingFetchImageRepo() -> FetchImageRepository {
+  func makeMoviesListFetchImageRepo() -> FetchImageRepository {
     DefaultFetchImageRepository(dataTransferService: dependencies.imageDataTransferService)
   }
 }
