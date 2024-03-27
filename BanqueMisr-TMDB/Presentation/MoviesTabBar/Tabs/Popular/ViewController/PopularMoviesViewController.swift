@@ -8,15 +8,22 @@
 import UIKit
 
 class PopularMoviesViewController: UIViewController {
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-//    setupView()
-    view.backgroundColor = .green
+  //MARK: - Properties
+  private let moviesListTableViewController:MoviesListTableViewController
+  //MARK: - Outlets
+  @IBOutlet private weak var containerView: UIView!
+  //MARK: - Init
+  init(moviesListTableViewController:MoviesListTableViewController) {
+    self.moviesListTableViewController = moviesListTableViewController
+    super.init(nibName: nil, bundle: nil)
   }
   
-  private func setupView() {
-    tabBarItem.title = "Popular"
-    tabBarItem.image = UIImage(systemName: "play.circle")
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+    //MARK: - ViewLifeCycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    addChildVC(moviesListTableViewController, into: containerView)
   }
 }

@@ -8,15 +8,22 @@
 import UIKit
 
 class UpcomingMoviesViewController: UIViewController {
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-//    setupView()
-    view.backgroundColor = .gray
+    //MARK: - Properties
+  private let moviesListTableViewController:MoviesListTableViewController
+    //MARK: - Outlets
+  @IBOutlet private weak var containerView: UIView!
+    //MARK: - Init
+  init(moviesListTableViewController:MoviesListTableViewController) {
+    self.moviesListTableViewController = moviesListTableViewController
+    super.init(nibName: nil, bundle: nil)
   }
   
-  private func setupView() {
-    tabBarItem.title = "Upcoming"
-    tabBarItem.image = UIImage(systemName: "arrow.down.circle.dotted")
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+    //MARK: - ViewLifeCycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    addChildVC(moviesListTableViewController, into: containerView)
   }
 }

@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NowPlayingViewController" customModule="BanqueMisr_TMDB" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="CJK-7N-TTU" id="3ry-8Y-WHJ"/>
+                <outlet property="containerView" destination="MgU-ns-VJw" id="ZfX-a1-gmV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,18 +19,18 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CJK-7N-TTU">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgU-ns-VJw">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CJK-7N-TTU" secondAttribute="trailing" id="9gr-Qh-I6i"/>
-                <constraint firstItem="CJK-7N-TTU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ldj-QS-Zjm"/>
-                <constraint firstItem="CJK-7N-TTU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bK1-IY-0Vl"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="CJK-7N-TTU" secondAttribute="bottom" id="fXk-zI-GGr"/>
+                <constraint firstItem="MgU-ns-VJw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9hs-Wk-TJQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MgU-ns-VJw" secondAttribute="trailing" id="FLK-RG-scV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MgU-ns-VJw" secondAttribute="bottom" id="an6-6q-QCw"/>
+                <constraint firstItem="MgU-ns-VJw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="w8i-T6-cKW"/>
             </constraints>
             <point key="canvasLocation" x="138" y="20"/>
         </view>
