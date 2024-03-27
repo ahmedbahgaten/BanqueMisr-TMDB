@@ -18,5 +18,5 @@ struct Movie: Equatable, Identifiable {
 struct MoviesPage: Equatable {
   let page: Int
   let totalPages: Int
-  let movies: [Movie]
+  var movies: [Movie]
 }
