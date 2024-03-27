@@ -8,6 +8,9 @@
 import UIKit
 import Combine
 
+protocol MoviesListTableViewDelegate:AnyObject {
+  func didSelectMovie(with id:String)
+}
 final class MoviesListTableViewController: UITableViewController {
   //MARK: - Properties
   private let viewModel: MoviesListViewModel
@@ -16,6 +19,7 @@ final class MoviesListTableViewController: UITableViewController {
   private var subscriptions = Set<AnyCancellable>()
   private let refresh = UIRefreshControl()
   private var dataSource:UITableViewDiffableDataSource<Int,MovieListItemViewModel>!
+  weak var delegate:MoviesListTableViewDelegate?
   //MARK: - Init
   init(viewModel: MoviesListViewModel,
        fetchImageRepository: FetchImageRepository) {
@@ -132,5 +136,9 @@ extension MoviesListTableViewController {
   
   override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     UITableView.automaticDimension
+  }
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let selectedMovieId = viewModel.getSelectedMovieId(at: indexPath.row)
+    delegate?.didSelectMovie(with: selectedMovieId)
   }
 }

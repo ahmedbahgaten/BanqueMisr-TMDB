@@ -18,6 +18,7 @@ final class NowPlayingViewController: UIViewController {
   init(moviesListTableViewController:MoviesListTableViewController) {
     self.moviesListTableViewController = moviesListTableViewController
     super.init(nibName: nil, bundle: nil)
+    moviesListTableViewController.delegate = self
   }
   
   required init?(coder: NSCoder) {
@@ -35,5 +36,12 @@ final class NowPlayingViewController: UIViewController {
   
   func setCoordinator(_ coordinator:Coordinator) {
     self.coordinator = coordinator
+  }
+}
+//MARK: - MoviesListTableViewControllerDelegate
+extension NowPlayingViewController:MoviesListTableViewDelegate {
+  func didSelectMovie(with id: String) {
+    guard let coordintor = coordinator as? NowPlayingCoordinator else { return }
+    coordintor.navigateToMovieDetails(with: id)
   }
 }

@@ -11,7 +11,7 @@ import Combine
 protocol MoviesListViewModelInputs {
   func fetchMoviesList() async throws -> [MovieListItemViewModel]
   func didLoadNextPage() async throws -> [MovieListItemViewModel]
-  func didSelectItem(at index: Int)
+  func getSelectedMovieId(at index: Int) -> String
 }
 
 enum MoviesListViewModelLoading {
@@ -63,9 +63,7 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
     pages = pages.filter { $0.page != moviesPage.page }
     var newPages = moviesPage
     var uniqueMovieIDs = Set<String>()
-    for page in pages {
-      uniqueMovieIDs.formUnion(page.movies.map(\.id))
-    }
+    pages.forEach { uniqueMovieIDs.formUnion($0.movies.map(\.id)) }
     newPages.movies = newPages.movies.filter { !uniqueMovieIDs.contains($0.id) }
     pages.append(newPages)
   }
@@ -102,8 +100,8 @@ extension DefaultMoviesListViewModel {
     return try await loadMovies(loading: .nextPage)
   }
   
-  func didSelectItem(at index: Int) {
-    
+  func getSelectedMovieId(at index: Int) -> String {
+    return items[index].id
   }
   
 }

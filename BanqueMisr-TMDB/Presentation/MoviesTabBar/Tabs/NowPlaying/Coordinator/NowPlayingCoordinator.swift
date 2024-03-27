@@ -29,4 +29,9 @@ final class NowPlayingCoordinator:Coordinator {
   
   func finish() { }
   
+  func navigateToMovieDetails(with id:String) {
+    let movieDetailsVC = MovieDetailsViewController()
+    navigationController.pushViewController(movieDetailsVC, animated: true)
+  }
+  
 }
