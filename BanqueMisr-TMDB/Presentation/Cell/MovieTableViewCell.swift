@@ -28,6 +28,7 @@ class MovieTableViewCell: UITableViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
     imageDownloadTask?.cancel()
+    moviePosterImgView.image = nil
   }
   
   //MARK: - Methods
@@ -44,6 +45,7 @@ class MovieTableViewCell: UITableViewCell {
                    fetchImageRepo:fetchImageRepo)
   }
   
+  //MARK: - Private Methods
   private func setPosterImage(posterPath:String,
                               fetchImageRepo:FetchImageRepository) {
     if let image = ImageCacheManager.shared.getImage(forKey: posterPath) {
