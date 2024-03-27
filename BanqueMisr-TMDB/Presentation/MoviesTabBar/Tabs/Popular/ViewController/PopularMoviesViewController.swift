@@ -10,7 +10,7 @@ import UIKit
 class PopularMoviesViewController: UIViewController {
   //MARK: - Properties
   private let moviesListTableViewController:MoviesListTableViewController
-  private var coordinator:Coordinator?
+  private weak var coordinator:Coordinator?
   //MARK: - Outlets
   @IBOutlet private weak var containerView: UIView!
   //MARK: - Init
