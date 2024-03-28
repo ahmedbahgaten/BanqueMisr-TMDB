@@ -16,7 +16,7 @@ final class AppDIContainer {
       baseURL: URL(string: appConfiguration.apiBaseURL)!,
       queryParameters: [
         "api_key": appConfiguration.apiKey,
-        "language": NSLocale.preferredLanguages.first ?? "en"
+        "language": "en"
       ]
     )
     
