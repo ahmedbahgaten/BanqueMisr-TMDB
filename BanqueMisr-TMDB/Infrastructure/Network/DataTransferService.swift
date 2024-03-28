@@ -41,13 +41,6 @@ final class DefaultDataTransferService {
       throw DataTransferError.parsing(error)
     }
   }
-  
-  private func resolve(networkError error: NetworkError) -> DataTransferError {
-    let resolvedError = self.errorResolver.resolve(error: error)
-    return resolvedError is NetworkError
-    ? .networkFailure(error)
-    : .resolvedNetworkFailure(resolvedError)
-  }
 }
 
 extension DefaultDataTransferService: DataTransferService {
