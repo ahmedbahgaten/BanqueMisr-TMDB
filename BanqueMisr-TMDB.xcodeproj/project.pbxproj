@@ -277,7 +277,7 @@
 		923B596F2BB2114C00537676 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				923B59B82BB3538800537676 /* Cell */,
+				928724D62BB4D8A200E25A4B /* MovieDetails */,
 				923B59702BB2115200537676 /* MoviesTabBar */,
 			);
 			path = Presentation;
@@ -286,7 +286,6 @@
 		923B59702BB2115200537676 /* MoviesTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				928724D62BB4D8A200E25A4B /* MovieDetails */,
 				92B8A6152BB4CAFF00F20F73 /* TabBar */,
 				92B8A5FC2BB4890800F20F73 /* MoviesListTableViewController */,
 				923B59712BB2116200537676 /* Tabs */,
@@ -542,22 +541,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		928724DD2BB4FD7D00E25A4B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				923B59B82BB3538800537676 /* Cell */,
+				92B8A5FD2BB4892200F20F73 /* TableViewController */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		92B8A5FC2BB4890800F20F73 /* MoviesListTableViewController */ = {
 			isa = PBXGroup;
 			children = (
 				92B8A5FE2BB4893400F20F73 /* ViewModel */,
-				92B8A5FD2BB4892200F20F73 /* TableView */,
+				928724DD2BB4FD7D00E25A4B /* Views */,
 			);
 			path = MoviesListTableViewController;
 			sourceTree = "<group>";
 		};
-		92B8A5FD2BB4892200F20F73 /* TableView */ = {
+		92B8A5FD2BB4892200F20F73 /* TableViewController */ = {
 			isa = PBXGroup;
 			children = (
 				92B8A5FF2BB4894C00F20F73 /* MoviesListTableViewController.swift */,
 				92B8A6002BB4894C00F20F73 /* MoviesListTableViewController.xib */,
 			);
-			path = TableView;
+			path = TableViewController;
 			sourceTree = "<group>";
 		};
 		92B8A5FE2BB4893400F20F73 /* ViewModel */ = {
