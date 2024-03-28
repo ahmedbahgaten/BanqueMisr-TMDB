@@ -40,4 +40,8 @@ extension NowPlayingViewController:MoviesListTableViewDelegate {
     guard let coordintor = coordinator as? NowPlayingCoordinator else { return }
     coordintor.navigateToMovieDetails(with: id)
   }
+  
+  func showLoader(show: Bool) {
+    show ? showLoader() : hideLoader()
+  }
 }

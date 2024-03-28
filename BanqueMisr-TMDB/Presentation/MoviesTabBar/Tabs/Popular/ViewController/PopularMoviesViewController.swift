@@ -35,6 +35,10 @@ class PopularMoviesViewController: UIViewController {
 }
 //MARK: - MoviesListTableViewDelegate
 extension PopularMoviesViewController:MoviesListTableViewDelegate {
+  func showLoader(show: Bool) {
+    show ? showLoader() : hideLoader()
+  }
+  
   func didSelectMovie(with id: String) {
     guard let coordintor = coordinator as? PopularCoordinator else { return }
     coordintor.navigateToMovieDetails(with: id)

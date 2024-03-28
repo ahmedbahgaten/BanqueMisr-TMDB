@@ -35,6 +35,10 @@ class UpcomingMoviesViewController: UIViewController {
 }
 //MARK: - MoviesListTableViewDelegate
 extension UpcomingMoviesViewController:MoviesListTableViewDelegate {
+  func showLoader(show: Bool) {
+    show ? showLoader() : hideLoader()
+  }
+  
   func didSelectMovie(with id: String) {
     guard let coordintor = coordinator as? UpcomingCoordinator else { return }
     coordintor.navigateToMovieDetails(with: id)
