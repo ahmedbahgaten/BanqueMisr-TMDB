@@ -59,7 +59,7 @@ class MovieDetailsViewController: UIViewController {
     moviePosterImgView.image = ImageCacheManager.shared.getImage(forKey: movieDetails.posterPath)
     genresLbl.text = movieDetails.genresTxt
     runtimeLbl.text = movieDetails.runtime.description
-    budgetLbl.text = movieDetails.budget.description + "$"
+    budgetLbl.text = movieDetails.budgetTxt
     statusLbl.text = movieDetails.status
     spokenLanguageLbl.text = movieDetails.spokenLangaugesTxt
   }
