@@ -18,7 +18,6 @@ final class NowPlayingViewController: UIViewController {
   init(moviesListTableViewController:MoviesListTableViewController) {
     self.moviesListTableViewController = moviesListTableViewController
     super.init(nibName: nil, bundle: nil)
-    moviesListTableViewController.delegate = self
   }
   
   required init?(coder: NSCoder) {
@@ -28,10 +27,7 @@ final class NowPlayingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     addChildVC(moviesListTableViewController, into: containerView)
-  }
-  
-  func navigateToMovieDetails(movieID:String) {
-    
+    moviesListTableViewController.delegate = self
   }
   
   func setCoordinator(_ coordinator:Coordinator) {
