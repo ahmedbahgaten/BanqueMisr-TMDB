@@ -26,9 +26,17 @@ class PopularMoviesViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     addChildVC(moviesListTableViewController, into: containerView)
+    moviesListTableViewController.delegate = self
   }
   
   func setCoordinator(_ coordinator:Coordinator) {
     self.coordinator = coordinator
+  }
+}
+//MARK: - MoviesListTableViewDelegate
+extension PopularMoviesViewController:MoviesListTableViewDelegate {
+  func didSelectMovie(with id: String) {
+    guard let coordintor = coordinator as? PopularCoordinator else { return }
+    coordintor.navigateToMovieDetails(with: id)
   }
 }

@@ -26,9 +26,17 @@ class UpcomingMoviesViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     addChildVC(moviesListTableViewController, into: containerView)
+    moviesListTableViewController.delegate = self
   }
   //MARK: - Setter
   func setCoordinator(_ coordinator:Coordinator) {
     self.coordinator = coordinator
+  }
+}
+//MARK: - MoviesListTableViewDelegate
+extension UpcomingMoviesViewController:MoviesListTableViewDelegate {
+  func didSelectMovie(with id: String) {
+    guard let coordintor = coordinator as? UpcomingCoordinator else { return }
+    coordintor.navigateToMovieDetails(with: id)
   }
 }
