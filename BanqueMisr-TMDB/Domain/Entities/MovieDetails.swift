@@ -7,6 +7,7 @@
 
 import Foundation
 struct MovieDetails {
+  private let id:Int
   private let genres: [Genre]
   let overview: String
   let posterPath: String
@@ -16,7 +17,8 @@ struct MovieDetails {
   let status:String
   let title: String
   
-  init(genres: [MovieDetails.Genre],
+  init(id:Int,
+       genres: [MovieDetails.Genre],
        overview: String,
        posterPath: String,
        runtime: Int,
@@ -24,6 +26,7 @@ struct MovieDetails {
        budget: Int,
        status: String,
        title: String) {
+    self.id = id
     self.genres = genres
     self.overview = overview
     self.posterPath = posterPath
@@ -51,5 +54,11 @@ struct MovieDetails {
   
   struct SpokenLanguage {
     let englishName, iso639_1, name: String
+  }
+}
+
+extension MovieDetails:Equatable {
+  static func == (lhs: MovieDetails, rhs: MovieDetails) -> Bool {
+    lhs.id == rhs.id
   }
 }

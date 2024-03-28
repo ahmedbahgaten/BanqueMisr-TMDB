@@ -7,6 +7,7 @@
 
 import Foundation
 struct MovieDetailsDTO: Codable {
+  let id:Int
   let genres: [GenreDTO]
   let overview: String
   let posterPath: String
@@ -17,6 +18,7 @@ struct MovieDetailsDTO: Codable {
   let budget:Int
   
   enum CodingKeys: String, CodingKey {
+    case id
     case genres
     case overview
     case posterPath = "poster_path"
@@ -46,7 +48,8 @@ struct MovieDetailsDTO: Codable {
 
 extension MovieDetailsDTO {
   func toDomain() -> MovieDetails {
-    return .init(genres: genres.map { $0.toDomain() },
+    return .init(id:id,
+                 genres: genres.map { $0.toDomain() },
                  overview: overview,
                  posterPath: posterPath,
                  runtime: runtime,

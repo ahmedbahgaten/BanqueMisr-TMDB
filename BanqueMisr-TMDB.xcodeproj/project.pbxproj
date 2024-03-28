@@ -72,6 +72,10 @@
 		92B8A6142BB4CAEA00F20F73 /* UpcomingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6132BB4CAEA00F20F73 /* UpcomingCoordinator.swift */; };
 		92B8A6182BB4CB2A00F20F73 /* AppTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A6172BB4CB2A00F20F73 /* AppTabBarCoordinator.swift */; };
 		92B8A61B2BB4CB4800F20F73 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8A61A2BB4CB4800F20F73 /* Coordinator.swift */; };
+		92E3E2762BB5D48700EB8014 /* MoviesListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2752BB5D48700EB8014 /* MoviesListUseCaseTests.swift */; };
+		92E3E2792BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2782BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift */; };
+		92E3E27C2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E27B2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift */; };
+		92E3E27E2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E27D2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +165,11 @@
 		92B8A6132BB4CAEA00F20F73 /* UpcomingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCoordinator.swift; sourceTree = "<group>"; };
 		92B8A6172BB4CB2A00F20F73 /* AppTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarCoordinator.swift; sourceTree = "<group>"; };
 		92B8A61A2BB4CB4800F20F73 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		92E3E2752BB5D48700EB8014 /* MoviesListUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListUseCaseTests.swift; sourceTree = "<group>"; };
+		92E3E2782BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListRepositoryMock.swift; sourceTree = "<group>"; };
+		92E3E27A2BB5D9EC00EB8014 /* BanqueMisr-TMDB.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BanqueMisr-TMDB.xctestplan"; sourceTree = "<group>"; };
+		92E3E27B2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsUseCaseTests.swift; sourceTree = "<group>"; };
+		92E3E27D2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsRepositoryMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +200,7 @@
 		923B59102BB12E9C00537676 = {
 			isa = PBXGroup;
 			children = (
+				92E3E27A2BB5D9EC00EB8014 /* BanqueMisr-TMDB.xctestplan */,
 				923B591B2BB12E9C00537676 /* BanqueMisr-TMDB */,
 				923B59322BB12E9F00537676 /* BanqueMisr-TMDBTests */,
 				923B593C2BB12EA000537676 /* BanqueMisr-TMDBUITests */,
@@ -227,6 +237,8 @@
 		923B59322BB12E9F00537676 /* BanqueMisr-TMDBTests */ = {
 			isa = PBXGroup;
 			children = (
+				92E3E2772BB5D4AE00EB8014 /* Mocks */,
+				92E3E2732BB5D45900EB8014 /* Domain */,
 				923B59332BB12EA000537676 /* BanqueMisr_TMDBTests.swift */,
 			);
 			path = "BanqueMisr-TMDBTests";
@@ -663,6 +675,32 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		92E3E2732BB5D45900EB8014 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				92E3E2742BB5D46300EB8014 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		92E3E2742BB5D46300EB8014 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				92E3E2752BB5D48700EB8014 /* MoviesListUseCaseTests.swift */,
+				92E3E27B2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		92E3E2772BB5D4AE00EB8014 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				92E3E2782BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift */,
+				92E3E27D2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -860,7 +898,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E3E2762BB5D48700EB8014 /* MoviesListUseCaseTests.swift in Sources */,
+				92E3E27E2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift in Sources */,
 				923B59342BB12EA000537676 /* BanqueMisr_TMDBTests.swift in Sources */,
+				92E3E2792BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift in Sources */,
+				92E3E27C2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
