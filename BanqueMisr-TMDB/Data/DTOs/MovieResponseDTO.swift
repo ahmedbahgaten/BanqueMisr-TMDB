@@ -20,20 +20,17 @@ struct MoviesResponseDTO: Decodable {
 
 extension MoviesResponseDTO {
   struct MovieDTO: Decodable {
+    let id: Int
+    let title: String?
+    let posterPath: String?
+    let releaseDate: String?
+    
     private enum CodingKeys: String, CodingKey {
       case id
       case title
       case posterPath = "poster_path"
       case releaseDate = "release_date"
     }
-    enum GenreDTO: String, Decodable {
-      case adventure
-      case scienceFiction = "science_fiction"
-    }
-    let id: Int
-    let title: String?
-    let posterPath: String?
-    let releaseDate: String?
   }
 }
 
