@@ -40,4 +40,11 @@ final class AppDIContainer {
     )
     return MoviesTabBarDIContainer(dependencies: dependencies)
   }
+  
+  func makeMovieDetailsDIContainer() -> MovieDetailsDIContainer {
+    let dependencies = MovieDetailsDIContainer.Dependencies(apiDataTransferService: apiDataTransferService,
+                                                            imageDataTransferService: imageDataTransferService)
+    return MovieDetailsDIContainer(dependencies: dependencies)
+  }
+  
 }
