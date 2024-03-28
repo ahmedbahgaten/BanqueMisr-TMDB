@@ -27,6 +27,7 @@ class UpcomingMoviesViewController: UIViewController {
     super.viewDidLoad()
     addChildVC(moviesListTableViewController, into: containerView)
     moviesListTableViewController.delegate = self
+    title = "Upcoming"
   }
   //MARK: - Setter
   func setCoordinator(_ coordinator:Coordinator) {

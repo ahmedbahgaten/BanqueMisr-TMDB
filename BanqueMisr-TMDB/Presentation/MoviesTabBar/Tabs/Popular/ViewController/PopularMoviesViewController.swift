@@ -27,6 +27,7 @@ class PopularMoviesViewController: UIViewController {
     super.viewDidLoad()
     addChildVC(moviesListTableViewController, into: containerView)
     moviesListTableViewController.delegate = self
+    title = "Popular"
   }
   
   func setCoordinator(_ coordinator:Coordinator) {

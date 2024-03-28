@@ -28,6 +28,7 @@ final class NowPlayingViewController: UIViewController {
     super.viewDidLoad()
     addChildVC(moviesListTableViewController, into: containerView)
     moviesListTableViewController.delegate = self
+    title = "Now Playing"
   }
   
   func setCoordinator(_ coordinator:Coordinator) {
