@@ -6,3 +6,6 @@
 //
 
 import Foundation
+protocol MovieDetailsRepository {
+  func getMovieDetails(for movieID:String) async throws -> MovieDetails
+}
