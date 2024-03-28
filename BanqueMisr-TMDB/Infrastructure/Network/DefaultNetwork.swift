@@ -45,6 +45,7 @@ final class DefaultNetworkService {
     switch code {
       case .notConnectedToInternet: return .notConnected
       case .cancelled: return .cancelled
+      case .timedOut: return .timeout
       default: return .generic(error)
     }
   }
@@ -53,12 +54,8 @@ final class DefaultNetworkService {
 extension DefaultNetworkService: NetworkService {
   
   func request(endpoint: Requestable) async throws -> Data? {
-    do {
-      let urlRequest = try endpoint.urlRequest(with: config)
-      return try await request(request: urlRequest)
-    } catch {
-      return nil
-    }
+    let urlRequest = try endpoint.urlRequest(with: config)
+    return try await request(request: urlRequest)
   }
 }
 

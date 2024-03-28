@@ -11,6 +11,19 @@ enum DataTransferError: Error {
   case parsing(Error)
   case networkFailure(NetworkError)
   case resolvedNetworkFailure(Error)
+  
+  var errorMessage:String {
+    switch self {
+      case .noResponse:
+        return "No response"
+      case .parsing:
+        return "Could not show the data due to internal error"
+      case .networkFailure(let networkError):
+        return networkError.errorMessage
+      case .resolvedNetworkFailure:
+        return "Network failure"
+    }
+  }
 }
 
 protocol DataTransferErrorResolver {

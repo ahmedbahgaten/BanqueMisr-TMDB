@@ -22,6 +22,7 @@ enum MoviesListViewModelLoading {
 protocol MoviesListViewModelOutputs {
   var items:[MovieListItemViewModel] { get }
   var loading: PassthroughSubject<MoviesListViewModelLoading?,Never> { get }
+  var errorMessage:PassthroughSubject<String,Never> { get }
   var isEmpty: Bool { get }
   var screenTitle: String { get }
   var emptyDataTitle: String { get }
@@ -42,6 +43,7 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
     //MARK: - Outputs
   var items: [MovieListItemViewModel] = []
   var loading: PassthroughSubject<MoviesListViewModelLoading?, Never> = .init()
+  var errorMessage: PassthroughSubject<String, Never> = .init()
   var isEmpty: Bool { pages.movies.isEmpty }
   var screenTitle: String { "Now Playing"}
   var emptyDataTitle: String { "Couldn't load Now Playing movies"}
@@ -76,14 +78,19 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
   }
   
   private func loadMovies(loading:MoviesListViewModelLoading?) async throws -> [MovieListItemViewModel] {
-    self.loading.send(loading)
-    isCurrentlyFetching = true
-    let moviesList = try await moviesListUseCase.execute(for: moviesType,
-                                                         requestValue: .init(page: nextPage))
-    self.loading.send(.none)
-    isCurrentlyFetching = false
-    appendPage(moviesList)
-    return items
+    do {
+      self.loading.send(loading)
+      isCurrentlyFetching = true
+      let moviesList = try await moviesListUseCase.execute(for: moviesType,
+                                                           requestValue: .init(page: nextPage))
+      self.loading.send(.none)
+      isCurrentlyFetching = false
+      appendPage(moviesList)
+      return items
+    }catch {
+      errorMessage.send(error.errorMessage)
+      throw error
+    }
   }
 }
   //MARK: - Inputs

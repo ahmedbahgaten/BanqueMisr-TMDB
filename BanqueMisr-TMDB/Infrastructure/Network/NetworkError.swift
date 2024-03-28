@@ -43,8 +43,26 @@ enum NetworkError: Error {
   case error(statusCode: Int, data: Data?)
   case notConnected
   case cancelled
+  case timeout
   case generic(Error)
   case urlGeneration
+  
+  var errorMessage:String {
+    switch self {
+      case .error(let statusCode,_):
+        return "Something went wrong with statuscode \(statusCode)"
+      case .notConnected:
+        return "No internet connection"
+      case .cancelled:
+        return "Request is cancelled"
+      case .timeout:
+        return "Request timeout"
+      case .generic:
+        return "Something went wrong"
+      case .urlGeneration:
+        return "Invalid url request"
+    }
+  }
 }
 
 extension NetworkError {

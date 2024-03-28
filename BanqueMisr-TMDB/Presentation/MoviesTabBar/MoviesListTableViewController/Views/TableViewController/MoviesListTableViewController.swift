@@ -10,8 +10,9 @@ import Combine
 
 protocol MoviesListTableViewDelegate:AnyObject {
   func didSelectMovie(with id:String)
+  func showLoader(show:Bool)
 }
-final class MoviesListTableViewController: UITableViewController {
+final class MoviesListTableViewController: UITableViewController ,Alertable {
   //MARK: - Properties
   private let viewModel: MoviesListViewModel
   private let fetchImageRepository:FetchImageRepository
@@ -48,12 +49,23 @@ final class MoviesListTableViewController: UITableViewController {
   }
   
   private func setupBinding() {
-    viewModel.loading.sink { [weak self] loading in
+    viewModel.loading
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] loading in
       DispatchQueue.main.async {
         self?.setupLoading(loading)
       }
     }
     .store(in: &subscriptions)
+    
+    viewModel.errorMessage
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] errorMessage in
+        self?.setupLoading(nil)
+        self?.showAlert(title: "Error",
+                        message: errorMessage,
+                        preferredStyle: .alert)
+      }.store(in: &subscriptions)
   }
   
   private func setupTableView() {
@@ -87,7 +99,8 @@ final class MoviesListTableViewController: UITableViewController {
   
   private func setupRefreshControl() {
     refresh.addTarget(self, action: #selector(refreshApps(_:)), for: .valueChanged)
-    refresh.tintColor = UIColor.init(named: "ShadowColor")
+    refresh.tintColor = .clear
+    refresh.subviews.first?.alpha = 0
   }
   
   @objc
@@ -106,14 +119,15 @@ final class MoviesListTableViewController: UITableViewController {
   private func setupLoading(_ loading:MoviesListViewModelLoading?) {
     switch loading {
       case .fullScreen:
-        LoadingView.show()
+        delegate?.showLoader(show: true)
       case .nextPage:
         nextPageLoadingSpinner?.removeFromSuperview()
         nextPageLoadingSpinner = tableView.makeActivityIndicator(size: .init(width: tableView.frame.size.width, height: 44))
         tableView.tableFooterView = nextPageLoadingSpinner
       case nil:
+        refresh.endRefreshing()
         tableView.tableFooterView = nil
-        LoadingView.hide()
+        delegate?.showLoader(show: false)
     }
   }
   
