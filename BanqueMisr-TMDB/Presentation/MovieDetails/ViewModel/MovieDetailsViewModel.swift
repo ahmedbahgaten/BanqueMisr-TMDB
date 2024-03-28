@@ -13,7 +13,8 @@ protocol MovieDetailsViewModelInputs {
 }
 
 protocol MovieDetailsViewModelOutputs {
-  var movieDetails:MovieDetails? { get }
+  var errorMessage:PassthroughSubject<String,Never> { get }
+  var isLoading:PassthroughSubject<Bool,Never> { get }
 }
 
 typealias MovieDetailsViewModel = MovieDetailsViewModelInputs & MovieDetailsViewModelOutputs
@@ -23,8 +24,10 @@ final class DefaultMovieDetailsViewModel {
   private let movieDetailsUseCase:MovieDetailsUseCase
   private let imgFetchingRepo:FetchImageRepository
   private let movieID:String
-  var movieDetails: MovieDetails?
-  
+  //MARK: - Outputs
+  var errorMessage: PassthroughSubject<String, Never> = .init()
+  var isLoading: PassthroughSubject<Bool, Never> = .init()
+  //MARK: - Init
   init(movieDetailsUseCase: MovieDetailsUseCase,
        imgFetchingRepo: FetchImageRepository,
        movieID:String) {
@@ -35,6 +38,14 @@ final class DefaultMovieDetailsViewModel {
 }
 extension DefaultMovieDetailsViewModel:MovieDetailsViewModel {
   func fetchMovieDetails() async throws -> MovieDetails {
-    return try await movieDetailsUseCase.execute(for: self.movieID)
+    do {
+      self.isLoading.send(true)
+      let movieDetails = try await movieDetailsUseCase.execute(for: self.movieID)
+      self.isLoading.send(false)
+      return movieDetails
+    }catch {
+      errorMessage.send(error.errorMessage)
+      throw error
+    }
   }
 }
