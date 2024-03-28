@@ -42,7 +42,9 @@ class MovieDetailsViewController: UIViewController {
   private func loadMovieDetails() {
     Task {
       do {
+        LoadingView.show()
         let details = try await viewModel.fetchMovieDetails()
+        LoadingView.hide()
         renderMovieDetailsUI(movieDetails: details)
       }catch {
         
