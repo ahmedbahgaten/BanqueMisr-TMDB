@@ -8,10 +8,6 @@
 import Foundation
 @testable import BanqueMisr_TMDB
 
-enum NetworkErrorMock: Error {
-  case notConnected
-}
-
 final class NetworkSessionManagerMock:NetworkSessionManager {
   var callCount = 0
   var data: Data?
