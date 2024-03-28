@@ -23,6 +23,11 @@ struct APIEndpoints {
     )
   }
   
+  static func getMovieDetails(with movieID:String) -> Endpoint<MovieDetailsDTO> {
+    return Endpoint(path:"3/movie/\(movieID)",
+                    method: .get)
+  }
+  
   static func getMoviePoster(path: String, width: Int) -> Endpoint<Data> {
     
     let sizes = [92, 154, 185, 342, 500, 780]
