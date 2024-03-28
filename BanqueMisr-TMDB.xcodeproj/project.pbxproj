@@ -76,6 +76,10 @@
 		92E3E2792BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2782BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift */; };
 		92E3E27C2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E27B2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift */; };
 		92E3E27E2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E27D2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift */; };
+		92E3E2832BB5EF7600EB8014 /* NetworkConfigurableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2822BB5EF7600EB8014 /* NetworkConfigurableMock.swift */; };
+		92E3E2852BB5EFB000EB8014 /* NetworkSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2842BB5EFB000EB8014 /* NetworkSessionManagerMock.swift */; };
+		92E3E2892BB5F04200EB8014 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2882BB5F04200EB8014 /* NetworkServiceTests.swift */; };
+		92E3E28D2BB5F32400EB8014 /* EndpointMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E28C2BB5F32400EB8014 /* EndpointMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +174,10 @@
 		92E3E27A2BB5D9EC00EB8014 /* BanqueMisr-TMDB.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BanqueMisr-TMDB.xctestplan"; sourceTree = "<group>"; };
 		92E3E27B2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsUseCaseTests.swift; sourceTree = "<group>"; };
 		92E3E27D2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsRepositoryMock.swift; sourceTree = "<group>"; };
+		92E3E2822BB5EF7600EB8014 /* NetworkConfigurableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurableMock.swift; sourceTree = "<group>"; };
+		92E3E2842BB5EFB000EB8014 /* NetworkSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerMock.swift; sourceTree = "<group>"; };
+		92E3E2882BB5F04200EB8014 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		92E3E28C2BB5F32400EB8014 /* EndpointMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +245,7 @@
 		923B59322BB12E9F00537676 /* BanqueMisr-TMDBTests */ = {
 			isa = PBXGroup;
 			children = (
-				92E3E2772BB5D4AE00EB8014 /* Mocks */,
+				92E3E27F2BB5EF3000EB8014 /* Infrastructure */,
 				92E3E2732BB5D45900EB8014 /* Domain */,
 				923B59332BB12EA000537676 /* BanqueMisr_TMDBTests.swift */,
 			);
@@ -678,6 +686,7 @@
 		92E3E2732BB5D45900EB8014 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				92E3E2772BB5D4AE00EB8014 /* Mocks */,
 				92E3E2742BB5D46300EB8014 /* UseCases */,
 			);
 			path = Domain;
@@ -697,6 +706,33 @@
 			children = (
 				92E3E2782BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift */,
 				92E3E27D2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		92E3E27F2BB5EF3000EB8014 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				92E3E2802BB5EF3500EB8014 /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		92E3E2802BB5EF3500EB8014 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				92E3E2812BB5EF4500EB8014 /* Mocks */,
+				92E3E2882BB5F04200EB8014 /* NetworkServiceTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		92E3E2812BB5EF4500EB8014 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				92E3E2822BB5EF7600EB8014 /* NetworkConfigurableMock.swift */,
+				92E3E2842BB5EFB000EB8014 /* NetworkSessionManagerMock.swift */,
+				92E3E28C2BB5F32400EB8014 /* EndpointMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -898,9 +934,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E3E2852BB5EFB000EB8014 /* NetworkSessionManagerMock.swift in Sources */,
 				92E3E2762BB5D48700EB8014 /* MoviesListUseCaseTests.swift in Sources */,
+				92E3E2892BB5F04200EB8014 /* NetworkServiceTests.swift in Sources */,
 				92E3E27E2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift in Sources */,
+				92E3E28D2BB5F32400EB8014 /* EndpointMock.swift in Sources */,
 				923B59342BB12EA000537676 /* BanqueMisr_TMDBTests.swift in Sources */,
+				92E3E2832BB5EF7600EB8014 /* NetworkConfigurableMock.swift in Sources */,
 				92E3E2792BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift in Sources */,
 				92E3E27C2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift in Sources */,
 			);

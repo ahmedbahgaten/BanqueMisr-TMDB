@@ -64,6 +64,11 @@ enum NetworkError: Error {
     }
   }
 }
+extension NetworkError:Equatable {
+  static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
+    lhs.errorMessage == rhs.errorMessage
+  }
+}
 
 extension NetworkError {
   var isNotFoundError: Bool { return hasStatusCode(404) }
