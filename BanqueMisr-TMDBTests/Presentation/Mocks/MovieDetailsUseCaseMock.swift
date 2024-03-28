@@ -21,6 +21,6 @@ extension MovieDetailsUseCaseMock:MovieDetailsUseCase {
     if let error = error {
       throw error
     }
-    return movieDetails
+    return movieDetails!
   }
 }
