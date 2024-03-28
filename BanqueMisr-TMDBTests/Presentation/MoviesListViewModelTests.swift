@@ -6,30 +6,92 @@
 //
 
 import XCTest
+@testable import BanqueMisr_TMDB
 
 final class MoviesListViewModelTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+  
+  private var sut:DefaultMoviesListViewModel?
+  private var usecase:MoviesListUseCaseMock?
+  
+  let moviesPages: [MoviesPage] = {
+    let page1 = MoviesPage(page: 1, totalPages: 2, movies: [
+      Movie(id: "1", title: "title1", posterPath: "/1", releaseDate: nil),
+      Movie(id: "2", title: "title2", posterPath: "/2", releaseDate: nil),
+      Movie(id: "3", title: "title3", posterPath: "/3", releaseDate: nil)])
+    let page2 = MoviesPage(page: 2, totalPages: 2, movies: [
+      Movie(id: "4", title: "title4", posterPath: "/4", releaseDate: nil)])
+    return [page1, page2]
+  }()
+  
+  override func setUp() {
+    super.setUp()
+    usecase = MoviesListUseCaseMock()
+    sut = DefaultMoviesListViewModel(moviesListUseCase: usecase!,
+                                     moviesType: .nowPlaying)
+  }
+  
+  override func tearDown() {
+    super.tearDown()
+    
+  }
+  
+  func test_whenFetchMoviesCalled_whereListOfMoviesExist_shouldReturnMovies() async throws {
+    usecase?.moviesPages = self.moviesPages.first
+    _ = try await sut?.fetchMoviesList()
+    XCTAssertEqual(sut!.currentPage, 1)
+    XCTAssertTrue(sut!.hasMorePages)
+    XCTAssertEqual(sut!.items.count, 3)
+    XCTAssertEqual(usecase?.callCount, 1)
+  }
+  
+  func test_whenFetchMoviesCalled_whereListOfMoviesIsEmpty_shouldReturnEmptyMovies() async throws {
+    usecase?.moviesPages = MoviesPage(page: 1, totalPages: 1, movies: [])
+    _ = try await sut?.fetchMoviesList()
+    XCTAssertEqual(sut!.currentPage, 1)
+    XCTAssertFalse(sut!.hasMorePages)
+    XCTAssertEqual(sut!.items.count, 0)
+    XCTAssertEqual(usecase?.callCount, 1)
+  }
+  
+  func test_whenFetchMoviesCalled_whereReturnFirstPageOnly_viewModelShouldHaveFirstPageOnly() async throws {
+    usecase?.moviesPages = moviesPages[0]
+    let expectedItems = moviesPages[0].movies.map(MovieListItemViewModel.init)
+    _ = try await sut?.fetchMoviesList()
+    XCTAssertEqual(sut!.items, expectedItems)
+    XCTAssertEqual(sut!.currentPage, 1)
+    XCTAssertTrue(sut!.hasMorePages)
+    XCTAssertEqual(usecase?.callCount, 1)
+  }
+  
+  func test_whenFetchMoviesCalled_whereReturnFirstAndSecondPages_viewModelShouldHaveFirstAndSecondPages() async throws {
+    usecase?.moviesPages = moviesPages[0]
+    _ = try await sut?.fetchMoviesList()
+    usecase?.moviesPages = moviesPages[1]
+    _ = try await sut?.didLoadNextPage()
+    let expectedItems = moviesPages.flatMap { $0.movies }.map(MovieListItemViewModel.init)
+    XCTAssertEqual(sut!.items, expectedItems)
+    XCTAssertEqual(sut!.currentPage, 2)
+    XCTAssertFalse(sut!.hasMorePages)
+    XCTAssertEqual(usecase?.callCount,2)
+  }
+  
+  func test_whenFetchMoviesCalled_whereErrorIsThrown_viewModelShouldHaveError() async throws {
+    let expectedError = NetworkError.timeout
+    usecase?.error = expectedError
+    do {
+      _ = try await sut?.fetchMoviesList()
+    }catch let error as NetworkError {
+      XCTAssertEqual(error, expectedError)
+      XCTAssertEqual(usecase?.callCount, 1)
+    }catch {
+      XCTFail("Unknown error type")
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+  }
+  
+  func test_whenFetchMoviesCalled_whenLastPage_viewModelShouldHasMorePagesFalse() async throws {
+    usecase?.moviesPages = moviesPages[1]
+    _ = try await sut?.fetchMoviesList()
+    _ = try await sut?.didLoadNextPage()
+    XCTAssertFalse(sut!.hasMorePages)
+  }
 }
