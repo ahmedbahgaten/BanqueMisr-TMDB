@@ -34,19 +34,8 @@ final class DefaultNetworkService {
                       response: sessionDataTask.response)
       return sessionDataTask.data
     }catch {
-      let error: NetworkError = self.resolve(error: error)
       self.logger.log(error: error)
       throw error
-    }
-  }
-  
-  private func resolve(error: Error) -> NetworkError {
-    let code = URLError.Code(rawValue: (error as NSError).code)
-    switch code {
-      case .notConnectedToInternet: return .notConnected
-      case .cancelled: return .cancelled
-      case .timedOut: return .timeout
-      default: return .generic(error)
     }
   }
 }
