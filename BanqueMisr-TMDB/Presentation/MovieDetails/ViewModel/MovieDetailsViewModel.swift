@@ -22,17 +22,14 @@ typealias MovieDetailsViewModel = MovieDetailsViewModelInputs & MovieDetailsView
 final class DefaultMovieDetailsViewModel {
   //MARK: - Properties
   private let movieDetailsUseCase:MovieDetailsUseCase
-  private let imgFetchingRepo:FetchImageRepository
   private let movieID:String
   //MARK: - Outputs
   var errorMessage: PassthroughSubject<String, Never> = .init()
   var isLoading: PassthroughSubject<Bool, Never> = .init()
   //MARK: - Init
   init(movieDetailsUseCase: MovieDetailsUseCase,
-       imgFetchingRepo: FetchImageRepository,
        movieID:String) {
     self.movieDetailsUseCase = movieDetailsUseCase
-    self.imgFetchingRepo = imgFetchingRepo
     self.movieID = movieID
   }
 }
