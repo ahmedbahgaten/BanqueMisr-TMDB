@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "C62BE352-748F-4B38-A00B-3E68914AB94B",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:BanqueMisr-TMDB.xcodeproj",
+      "identifier" : "923B59182BB12E9C00537676",
+      "name" : "BanqueMisr-TMDB"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BanqueMisr-TMDB.xcodeproj",
+        "identifier" : "923B592E2BB12E9F00537676",
+        "name" : "BanqueMisr-TMDBTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BanqueMisr-TMDB.xcodeproj",
+        "identifier" : "923B59382BB12EA000537676",
+        "name" : "BanqueMisr-TMDBUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
