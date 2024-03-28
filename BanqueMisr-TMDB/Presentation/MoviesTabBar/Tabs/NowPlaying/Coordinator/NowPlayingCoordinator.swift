@@ -32,10 +32,8 @@ final class NowPlayingCoordinator:Coordinator {
   func navigateToMovieDetails(with id:String) {
     let diContainer = AppDIContainer()
     let movieDetailsRepo = DefaultMovieDetailsRepository(dataTransferService: diContainer.apiDataTransferService)
-    let imgFetchingRepo = DefaultFetchImageRepository(dataTransferService: diContainer.imageDataTransferService)
     let movieDetailsUseCase = DefaultMovieDetailstUseCase(movieDetailsRepository: movieDetailsRepo)
     let viewModel = DefaultMovieDetailsViewModel(movieDetailsUseCase: movieDetailsUseCase,
-                                                 imgFetchingRepo: imgFetchingRepo,
                                                  movieID: id)
     let movieDetailsVC = MovieDetailsViewController(viewModel: viewModel)
     navigationController.pushViewController(movieDetailsVC, animated: true)
