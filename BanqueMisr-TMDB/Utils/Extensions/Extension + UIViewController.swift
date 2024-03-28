@@ -22,4 +22,25 @@ extension UIViewController {
     child.didMove(toParent: self)
     return child
   }
+  
+  func showLoader() {
+    let loaderView = LoaderView.fromNib()
+    self.view.addSubview(loaderView)
+    loaderView.tag = 100
+    loaderView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+    loaderView.topAnchor.constraint(equalTo: view.topAnchor),
+    loaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+    loaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+    loaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+    ])
+    loaderView.show()
+  }
+  
+  func hideLoader() {
+    if let view = self.view.viewWithTag(100) as? LoaderView {
+      view.hide()
+      view.removeFromSuperview()
+    }
+  }
 }
