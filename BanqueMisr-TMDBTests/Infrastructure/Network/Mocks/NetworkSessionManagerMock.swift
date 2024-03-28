@@ -23,8 +23,7 @@ final class NetworkSessionManagerMock:NetworkSessionManager {
       throw error
     }
     guard let data = data else {
-      throw NetworkError.generic(NSError(domain: "Test",
-                                         code: 500, userInfo: nil))
+      throw DataTransferError.noResponse
     }
     return (data,URLResponse())
   }

@@ -80,6 +80,8 @@
 		92E3E2852BB5EFB000EB8014 /* NetworkSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2842BB5EFB000EB8014 /* NetworkSessionManagerMock.swift */; };
 		92E3E2892BB5F04200EB8014 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2882BB5F04200EB8014 /* NetworkServiceTests.swift */; };
 		92E3E28D2BB5F32400EB8014 /* EndpointMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E28C2BB5F32400EB8014 /* EndpointMock.swift */; };
+		92E3E2912BB6137900EB8014 /* DataTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2902BB6137900EB8014 /* DataTransferServiceTests.swift */; };
+		92E3E2932BB6139E00EB8014 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2922BB6139E00EB8014 /* MockModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +180,8 @@
 		92E3E2842BB5EFB000EB8014 /* NetworkSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerMock.swift; sourceTree = "<group>"; };
 		92E3E2882BB5F04200EB8014 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		92E3E28C2BB5F32400EB8014 /* EndpointMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointMock.swift; sourceTree = "<group>"; };
+		92E3E2902BB6137900EB8014 /* DataTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferServiceTests.swift; sourceTree = "<group>"; };
+		92E3E2922BB6139E00EB8014 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -723,6 +727,7 @@
 			children = (
 				92E3E2812BB5EF4500EB8014 /* Mocks */,
 				92E3E2882BB5F04200EB8014 /* NetworkServiceTests.swift */,
+				92E3E2902BB6137900EB8014 /* DataTransferServiceTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -733,6 +738,7 @@
 				92E3E2822BB5EF7600EB8014 /* NetworkConfigurableMock.swift */,
 				92E3E2842BB5EFB000EB8014 /* NetworkSessionManagerMock.swift */,
 				92E3E28C2BB5F32400EB8014 /* EndpointMock.swift */,
+				92E3E2922BB6139E00EB8014 /* MockModel.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -939,9 +945,11 @@
 				92E3E2892BB5F04200EB8014 /* NetworkServiceTests.swift in Sources */,
 				92E3E27E2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift in Sources */,
 				92E3E28D2BB5F32400EB8014 /* EndpointMock.swift in Sources */,
+				92E3E2932BB6139E00EB8014 /* MockModel.swift in Sources */,
 				923B59342BB12EA000537676 /* BanqueMisr_TMDBTests.swift in Sources */,
 				92E3E2832BB5EF7600EB8014 /* NetworkConfigurableMock.swift in Sources */,
 				92E3E2792BB5D4BC00EB8014 /* MoviesListRepositoryMock.swift in Sources */,
+				92E3E2912BB6137900EB8014 /* DataTransferServiceTests.swift in Sources */,
 				92E3E27C2BB5E69E00EB8014 /* MovieDetailsUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

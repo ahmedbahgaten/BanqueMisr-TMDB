@@ -26,6 +26,12 @@ enum DataTransferError: Error {
   }
 }
 
+extension DataTransferError:Equatable {
+  static func == (lhs: DataTransferError, rhs: DataTransferError) -> Bool {
+    lhs.errorMessage == rhs.errorMessage
+  }
+}
+
 protocol DataTransferErrorResolver {
   func resolve(error: NetworkError) -> Error
 }
