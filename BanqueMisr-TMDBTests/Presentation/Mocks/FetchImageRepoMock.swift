@@ -10,10 +10,16 @@ import Foundation
 
 final class FetchImageRepoMock {
   var data:Data?
+  var error:NetworkError?
+  var callcount = 0
 }
 
 extension FetchImageRepoMock:FetchImageRepository {
   func fetchImage(with imagePath: String, width: Int) async throws -> Data {
+    callcount += 1
+    if let error = error {
+      throw error
+    }
     return data!
   }
 }

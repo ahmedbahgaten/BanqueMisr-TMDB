@@ -99,9 +99,22 @@ final class MoviesListViewModelTests: XCTestCase {
   }
   
   func test_whenFetchMoviePoster_whenValidImgDataAvailable_viewModelShouldReturnData() async throws {
-    let expectedData = Data()
+    let expectedData = "image data".data(using: .utf8)
     fetchImgRepo?.data = expectedData
     let data = try await sut?.fetchPosterImage(posterImgPath: "/3", width: 400)
     XCTAssertEqual(data, expectedData)
+    XCTAssertEqual(fetchImgRepo?.callcount, 1)
+  }
+  
+  func test_whenFetchMoviePoster_whenNetworkErrorIsThrown_viewModelShouldThrowError() async throws {
+    let expectedError = NetworkError.cancelled
+    fetchImgRepo?.error = expectedError
+    do {
+      _ = try await sut?.fetchPosterImage(posterImgPath: "/3", width: 400)
+    }catch let error as NetworkError {
+      XCTAssertEqual(error, expectedError)
+    }catch {
+      XCTFail("Unknown error type is thrown")
+    }
   }
 }
