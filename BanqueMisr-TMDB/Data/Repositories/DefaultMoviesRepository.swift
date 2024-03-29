@@ -9,9 +9,12 @@ import Foundation
 final class DefaultMoviesRepository {
   
   private let dataTransferService: DataTransferService
+  private let localStorage:MoviesResponseLocalStorage
   
-  init(dataTransferService: DataTransferService) {
+  init(dataTransferService: DataTransferService,
+       localStorage:MoviesResponseLocalStorage) {
     self.dataTransferService = dataTransferService
+    self.localStorage = localStorage
   }
 }
 
@@ -19,10 +22,18 @@ extension DefaultMoviesRepository:MoviesRepository {
   func getRemoteMoviesList(for category:APIEndpoints.MoviesCategoryPath,
                            page: Int) async throws -> MoviesPage {
     let requestDTO = MoviesRequestDTO(page: page)
-    let endpoint = APIEndpoints.getMovies(category: category,
-                                          with: requestDTO)
-    let responseDTO = try await self.dataTransferService.request(with: endpoint)
-    return responseDTO.toDomain()
-    
+    do {
+      let endpoint = APIEndpoints.getMovies(category: category,
+                                            with: requestDTO)
+      let responseDTO = try await self.dataTransferService.request(with: endpoint)
+      try await localStorage.save(response: responseDTO, for: requestDTO)
+      return responseDTO.toDomain()
+    }catch {
+      if let cachedResponse = try await localStorage.getResponse(for: requestDTO) {
+        return cachedResponse.toDomain()
+      }else {
+        throw error
+      }
+    }
   }
 }
