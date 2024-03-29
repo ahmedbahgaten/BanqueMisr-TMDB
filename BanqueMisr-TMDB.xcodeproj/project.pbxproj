@@ -52,6 +52,8 @@
 		923B59CA2BB3C2AC00537676 /* Extension + UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923B59C92BB3C2AB00537676 /* Extension + UITableView.swift */; };
 		925DE6C82BB6FF8500E6DC7E /* MoviePagesEntity + Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DE6C72BB6FF8500E6DC7E /* MoviePagesEntity + Mapping.swift */; };
 		925DE7132BB7385C00E6DC7E /* MoviePosterImageLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DE7122BB7385C00E6DC7E /* MoviePosterImageLocalStorage.swift */; };
+		925DE7152BB7588E00E6DC7E /* MovieDetailsResponseLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DE7142BB7588E00E6DC7E /* MovieDetailsResponseLocalStorage.swift */; };
+		925DE7172BB75BF500E6DC7E /* MovieDetailsEntitiy + Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DE7162BB75BF500E6DC7E /* MovieDetailsEntitiy + Mapping.swift */; };
 		928724E02BB4FDE200E25A4B /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928724DE2BB4FDE200E25A4B /* MovieDetailsViewController.swift */; };
 		928724E12BB4FDE200E25A4B /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928724DF2BB4FDE200E25A4B /* MovieDetailsViewController.xib */; };
 		928724E32BB4FE5500E25A4B /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928724E22BB4FE5500E25A4B /* MovieDetailsViewModel.swift */; };
@@ -161,6 +163,8 @@
 		923B59C92BB3C2AB00537676 /* Extension + UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITableView.swift"; sourceTree = "<group>"; };
 		925DE6C72BB6FF8500E6DC7E /* MoviePagesEntity + Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoviePagesEntity + Mapping.swift"; sourceTree = "<group>"; };
 		925DE7122BB7385C00E6DC7E /* MoviePosterImageLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterImageLocalStorage.swift; sourceTree = "<group>"; };
+		925DE7142BB7588E00E6DC7E /* MovieDetailsResponseLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsResponseLocalStorage.swift; sourceTree = "<group>"; };
+		925DE7162BB75BF500E6DC7E /* MovieDetailsEntitiy + Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetailsEntitiy + Mapping.swift"; sourceTree = "<group>"; };
 		928724DE2BB4FDE200E25A4B /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		928724DF2BB4FDE200E25A4B /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
 		928724E22BB4FE5500E25A4B /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -595,6 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				925DE6C72BB6FF8500E6DC7E /* MoviePagesEntity + Mapping.swift */,
+				925DE7162BB75BF500E6DC7E /* MovieDetailsEntitiy + Mapping.swift */,
 			);
 			path = EntityMapping;
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 				92E3E2B52BB6EC8D00EB8014 /* CoreDataStorage */,
 				92E3E2C32BB6F72B00EB8014 /* MoviesResponseLocalStorage.swift */,
 				925DE7122BB7385C00E6DC7E /* MoviePosterImageLocalStorage.swift */,
+				925DE7142BB7588E00E6DC7E /* MovieDetailsResponseLocalStorage.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -979,9 +985,11 @@
 				928724F12BB5B6C600E25A4B /* Extension + Error.swift in Sources */,
 				92B8A6112BB4CAD900F20F73 /* PopularCoordinator.swift in Sources */,
 				92B8A6012BB4894C00F20F73 /* MoviesListTableViewController.swift in Sources */,
+				925DE7172BB75BF500E6DC7E /* MovieDetailsEntitiy + Mapping.swift in Sources */,
 				923B597F2BB213A500537676 /* NowPlayingViewController.swift in Sources */,
 				928724ED2BB502F900E25A4B /* DefaultMovieDetailsRepository.swift in Sources */,
 				925DE7132BB7385C00E6DC7E /* MoviePosterImageLocalStorage.swift in Sources */,
+				925DE7152BB7588E00E6DC7E /* MovieDetailsResponseLocalStorage.swift in Sources */,
 				929152262BB5BD3A007CEC48 /* LoaderView.swift in Sources */,
 				923B59C12BB3613600537676 /* FetchImageRepository.swift in Sources */,
 				923B596E2BB20D0200537676 /* MoviesTabBarDIContainer.swift in Sources */,

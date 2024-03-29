@@ -10,6 +10,7 @@ import Combine
 
 protocol MovieDetailsViewModelInputs {
   func fetchMovieDetails() async throws -> MovieDetails
+  func fetchMovieImagePoster(for posterPath:String, with width:Int) async throws -> Data
 }
 
 protocol MovieDetailsViewModelOutputs {
@@ -44,5 +45,13 @@ extension DefaultMovieDetailsViewModel:MovieDetailsViewModel {
       errorMessage.send(error.errorMessage)
       throw error
     }
+  }
+  
+  func fetchMovieImagePoster(for posterPath:String,
+                             with width:Int) async throws -> Data {
+    return try await movieDetailsUseCase.fetchMovieImagePoster(
+      for: posterPath,
+      width: width
+    )
   }
 }

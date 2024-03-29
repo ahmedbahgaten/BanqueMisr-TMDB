@@ -63,11 +63,16 @@ class MovieDetailsViewController: UIViewController,Alertable {
   private func loadMovieDetails() {
     Task {
       let details = try await viewModel.fetchMovieDetails()
-      renderMovieDetailsUI(movieDetails: details)
+      let moviePoster = try await viewModel.fetchMovieImagePoster(
+        for: details.posterPath,
+        with: Int(moviePosterImgView.frame.size.width))
+      renderMovieDetailsUI(movieDetails: details,
+                           moviePosterImage: moviePoster)
     }
   }
   
-  private func renderMovieDetailsUI(movieDetails:MovieDetails) {
+  private func renderMovieDetailsUI(movieDetails:MovieDetails,
+                                    moviePosterImage:Data) {
     stackView.isHidden = false
     moviePosterImgView.isHidden = false
     overviewLbl.text = movieDetails.overview
@@ -76,7 +81,10 @@ class MovieDetailsViewController: UIViewController,Alertable {
     budgetLbl.text = movieDetails.budgetTxt
     statusLbl.text = movieDetails.status
     spokenLanguageLbl.text = movieDetails.spokenLangaugesTxt
-    guard let imageData = InMemoryImageCache.shared.getImage(forKey: movieDetails.posterPath) else { return }
-    moviePosterImgView.image = UIImage(data: imageData)
+    if let image = UIImage(data: moviePosterImage) {
+      moviePosterImgView.image = image
+    }else {
+      moviePosterImgView.image = UIImage(named: "TMDB")
+    }
   }
 }

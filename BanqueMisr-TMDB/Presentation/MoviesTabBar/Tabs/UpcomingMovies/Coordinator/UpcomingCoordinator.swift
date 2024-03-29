@@ -30,8 +30,16 @@ final class UpcomingCoordinator:Coordinator {
   
   func navigateToMovieDetails(with id:String) {
     let diContainer = AppDIContainer()
-    let movieDetailsRepo = DefaultMovieDetailsRepository(dataTransferService: diContainer.apiDataTransferService)
-    let movieDetailsUseCase = DefaultMovieDetailstUseCase(movieDetailsRepository: movieDetailsRepo)
+    let movieDetailsRepo = DefaultMovieDetailsRepository(
+      dataTransferService: diContainer.apiDataTransferService,
+      movieDetailsLocalStorage: CoreDataMovieDetailsResponseLocalStorage()
+    )
+    let movieDetailsUseCase = DefaultMovieDetailstUseCase(
+      movieDetailsRepository: movieDetailsRepo,
+      movieDetailsPosterRepo: DefaultFetchImageRepository(
+        dataTransferService: diContainer.apiDataTransferService,
+        localStorage: CoreDataMoviePosterImageLocalStorage())
+    )
     let viewModel = DefaultMovieDetailsViewModel(movieDetailsUseCase: movieDetailsUseCase,
                                                  movieID: id)
     let movieDetailsVC = MovieDetailsViewController(viewModel: viewModel)
