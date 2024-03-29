@@ -33,7 +33,6 @@ typealias MoviesListViewModel = MoviesListViewModelInputs & MoviesListViewModelO
 final class DefaultMoviesListViewModel:MoviesListViewModel {
     //MARK: - Properties
   private let moviesListUseCase:MoviesListUseCase
-  private let fetchImageRepo:FetchImageRepository
   private let moviesType:APIEndpoints.MoviesCategoryPath
   private var pages :[MoviesPage] = []
   private var isCurrentlyFetching:Bool = false
@@ -49,10 +48,8 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
   var emptyDataTitle: String { "No available movies"}
     //MARK: - Init
   init(moviesListUseCase:MoviesListUseCase,
-       fetchImageRepo:FetchImageRepository,
        moviesType:APIEndpoints.MoviesCategoryPath) {
     self.moviesListUseCase = moviesListUseCase
-    self.fetchImageRepo = fetchImageRepo
     self.moviesType = moviesType
   }
     //MARK: - Private methods
@@ -114,12 +111,9 @@ extension DefaultMoviesListViewModel {
   }
   
   func fetchPosterImage(posterImgPath: String,width:Int) async throws -> Data {
-    if let image = ImageCacheManager.shared.getImage(forKey: posterImgPath) {
-      return image.pngData() ?? Data()
-    }else {
-      let imgData = try await fetchImageRepo.fetchImage(with: posterImgPath, width: width)
-      return imgData
-      }
+    let imgData = try await moviesListUseCase.fetchImage(for: posterImgPath,
+                                                         width: width)
+    return imgData
     }
 }
   //MARK: - Private extension
