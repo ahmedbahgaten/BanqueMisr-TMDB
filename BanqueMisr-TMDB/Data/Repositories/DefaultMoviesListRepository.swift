@@ -6,7 +6,7 @@
 //
 
 import Foundation
-final class DefaultMoviesRepository {
+final class DefaultMoviesListRepository {
   
   private let dataTransferService: DataTransferService
   private let localStorage:MoviesResponseLocalStorage
@@ -18,7 +18,7 @@ final class DefaultMoviesRepository {
   }
 }
 
-extension DefaultMoviesRepository:MoviesRepository {
+extension DefaultMoviesListRepository:MoviesListRepository {
   func getRemoteMoviesList(for category:APIEndpoints.MoviesCategoryPath,
                            page: Int) async throws -> MoviesPage {
     let requestDTO = MoviesRequestDTO(page: page)

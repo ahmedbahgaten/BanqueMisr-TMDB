@@ -14,7 +14,7 @@ class MoviesListRepositoryMock {
   var moviesPage:MoviesPage? = nil
   var errorToThrow:Error?
 }
-extension MoviesListRepositoryMock:MoviesRepository {
+extension MoviesListRepositoryMock:MoviesListRepository {
   
   func getRemoteMoviesList(for category: APIEndpoints.MoviesCategoryPath, page: Int) async throws -> MoviesPage {
     callCount += 1

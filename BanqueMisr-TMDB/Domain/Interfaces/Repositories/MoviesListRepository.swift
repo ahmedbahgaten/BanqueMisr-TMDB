@@ -6,7 +6,7 @@
 //
 
 import Foundation
-protocol MoviesRepository {
+protocol MoviesListRepository {
   func getRemoteMoviesList(for category:APIEndpoints.MoviesCategoryPath,
                            page: Int) async throws -> MoviesPage
 }

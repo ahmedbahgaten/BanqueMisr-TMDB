@@ -76,8 +76,8 @@ extension MoviesTabBarDIContainer {
     DefaultMoviesListUseCase(moviesRepository: makeMoviesListRepository(),
                              imageFetcherRepo: makeMoviesListFetchImageRepo())
   }
-  func makeMoviesListRepository() -> MoviesRepository {
-    DefaultMoviesRepository(dataTransferService: dependencies.apiDataTransferService,
+  func makeMoviesListRepository() -> MoviesListRepository {
+    DefaultMoviesListRepository(dataTransferService: dependencies.apiDataTransferService,
                             localStorage: moviesResponseStorage)
   }
   func makeMoviesListFetchImageRepo() -> FetchImageRepository {

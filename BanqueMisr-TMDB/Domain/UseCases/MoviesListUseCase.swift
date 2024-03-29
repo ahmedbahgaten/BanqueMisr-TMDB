@@ -15,10 +15,10 @@ protocol MoviesListUseCase {
 
 final class DefaultMoviesListUseCase {
   //MARK: - Properties
-  private let moviesRepository: MoviesRepository
+  private let moviesRepository: MoviesListRepository
   private let movieImagePosterFetcherRepo:FetchImageRepository
   //MARK: -Init
-  init(moviesRepository: MoviesRepository,
+  init(moviesRepository: MoviesListRepository,
        imageFetcherRepo:FetchImageRepository) {
     self.moviesRepository = moviesRepository
     self.movieImagePosterFetcherRepo = imageFetcherRepo
