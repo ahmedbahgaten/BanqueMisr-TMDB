@@ -10,7 +10,7 @@ import Foundation
 protocol MoviesListUseCase {
   func execute(for category:APIEndpoints.MoviesCategoryPath,
                requestValue: MoviesListUseCaseRequestValue) async throws -> MoviesPage
-  func fetchImage(for posterPath:String,width:Int) async throws  -> Data
+  func fetchMovieCellImage(for posterPath:String,width:Int) async throws  -> Data
 }
 
 final class DefaultMoviesListUseCase {
@@ -30,7 +30,7 @@ extension DefaultMoviesListUseCase:MoviesListUseCase {
     return try await moviesRepository.getRemoteMoviesList(for: category, page: requestValue.page)
   }
   
-  func fetchImage(for posterPath: String,width:Int) async throws -> Data {
+  func fetchMovieCellImage(for posterPath: String,width:Int) async throws -> Data {
     return try await movieImagePosterFetcherRepo.fetchImage(with: posterPath,
                                                             width: width)
   }
