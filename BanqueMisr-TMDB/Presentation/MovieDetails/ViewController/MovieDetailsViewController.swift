@@ -71,11 +71,12 @@ class MovieDetailsViewController: UIViewController,Alertable {
     stackView.isHidden = false
     moviePosterImgView.isHidden = false
     overviewLbl.text = movieDetails.overview
-    moviePosterImgView.image = ImageCacheManager.shared.getImage(forKey: movieDetails.posterPath)
     genresLbl.text = movieDetails.genresTxt
     runtimeLbl.text = movieDetails.runtime.description
     budgetLbl.text = movieDetails.budgetTxt
     statusLbl.text = movieDetails.status
     spokenLanguageLbl.text = movieDetails.spokenLangaugesTxt
+    guard let imageData = InMemoryImageCache.shared.getImage(forKey: movieDetails.posterPath) else { return }
+    moviePosterImgView.image = UIImage(data: imageData)
   }
 }
