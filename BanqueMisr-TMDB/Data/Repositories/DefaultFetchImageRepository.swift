@@ -28,14 +28,28 @@ extension DefaultFetchImageRepository: FetchImageRepository {
   func fetchImage(with imagePath: String, width: Int) async throws -> Data {
     if let inMemoryCachedImage = InMemoryImageCache.shared.getImage(forKey: imagePath) {
       return inMemoryCachedImage
-    }else if let coreDataCachedImage = try await localStorage.getImage(for: imagePath) {
-      return coreDataCachedImage
     }else {
-      let endpoint = APIEndpoints.getMoviePoster(path: imagePath, width: width)
-      let imageData = try await dataTransferService.request(with: endpoint)
-      try await saveImage(data: imageData,
-                          for: imagePath)
-      return imageData
+      do {
+        return try await fetchImageFromRemote(
+          imagePath: imagePath,
+          width: width)
+      }catch {
+        guard let localStoredImage = try await fetchImageFromLocalStorage(
+          for: imagePath) else { throw error }
+        return localStoredImage
+      }
     }
+  }
+  
+  private func fetchImageFromRemote(imagePath:String,width:Int) async throws -> Data {
+    let endpoint = APIEndpoints.getMoviePoster(path: imagePath, width: width)
+    let imageData = try await dataTransferService.request(with: endpoint)
+    try await saveImage(data: imageData,
+                        for: imagePath)
+    return imageData
+  }
+  
+  private func fetchImageFromLocalStorage(for imagePath:String) async throws  -> Data? {
+    return try await localStorage.getImage(for: imagePath)
   }
 }
