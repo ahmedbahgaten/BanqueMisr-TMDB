@@ -21,10 +21,11 @@ extension MoviesListUseCaseMock:MoviesListUseCase {
     callCount += 1
     if let imageData = imageData {
       return imageData
-    }else {
-//      throw error
-      return Data()
     }
+    if let error = error {
+      throw error
+    }
+    return imageData!
   }
   
   func execute(for category: APIEndpoints.MoviesCategoryPath, requestValue: MoviesListUseCaseRequestValue) async throws -> MoviesPage {
