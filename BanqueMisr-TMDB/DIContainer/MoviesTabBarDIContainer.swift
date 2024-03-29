@@ -69,17 +69,18 @@ extension MoviesTabBarDIContainer {
                                          fetchImageRepository: fetchImgRepo)
   }
   func makeMoviesListViewModel(for moviesType:APIEndpoints.MoviesCategoryPath) -> MoviesListViewModel {
-    DefaultMoviesListViewModel(moviesListUseCase: makeMoviesListUseCase(), fetchImageRepo: makeMoviesListFetchImageRepo(),
+    DefaultMoviesListViewModel(moviesListUseCase: makeMoviesListUseCase(),
                                moviesType: moviesType)
   }
   func makeMoviesListUseCase() -> MoviesListUseCase {
-    DefaultMoviesListUseCase(moviesRepository: makeMoviesListRepository())
+    DefaultMoviesListUseCase(moviesRepository: makeMoviesListRepository(),
+                             imageFetcherRepo: makeMoviesListFetchImageRepo())
   }
   func makeMoviesListRepository() -> MoviesRepository {
     DefaultMoviesRepository(dataTransferService: dependencies.apiDataTransferService,
                             localStorage: moviesResponseStorage)
   }
   func makeMoviesListFetchImageRepo() -> FetchImageRepository {
-    DefaultFetchImageRepository(dataTransferService: dependencies.imageDataTransferService)
+    DefaultFetchImageRepository(dataTransferService: dependencies.imageDataTransferService,localStorage: CoreDataMoviePosterImageLocalStorage())
   }
 }
