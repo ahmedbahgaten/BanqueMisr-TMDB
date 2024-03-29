@@ -26,34 +26,3 @@ extension MovieEntity {
           releaseDate: releaseDate)
   }
 }
-
-extension MoviesRequestDTO {
-  func toEntity(in context: NSManagedObjectContext) -> MovieRequestEntity {
-    let entity: MovieRequestEntity = .init(context: context)
-    entity.page = Int32(page)
-    return entity
-  }
-}
-
-extension MoviesResponseDTO {
-  func toEntity(in context: NSManagedObjectContext) -> MoviePagesEntity {
-    let entity: MoviePagesEntity = .init(context: context)
-    entity.page = Int32(page)
-    entity.totalPages = Int32(totalPages)
-    movies.forEach {
-      entity.addToMovies($0.toEntity(in: context))
-    }
-    return entity
-  }
-}
-
-extension MoviesResponseDTO.MovieDTO {
-  func toEntity(in context: NSManagedObjectContext) -> MovieEntity {
-    let entity: MovieEntity = .init(context: context)
-    entity.id = id.description
-    entity.title = title
-    entity.posterPath = posterPath
-    entity.releaseDate = releaseDate
-    return entity
-  }
-}
