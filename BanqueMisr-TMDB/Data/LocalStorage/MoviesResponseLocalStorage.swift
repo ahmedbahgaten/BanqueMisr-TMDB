@@ -23,10 +23,10 @@ final class CoreDataMoviesResponseLocalStorage {
   
     // MARK: - Private
   
-  private func fetchRequest(for requestDto: MoviesRequestDTO) -> NSFetchRequest<MovieRequestEntity> {
-    let request: NSFetchRequest = MovieRequestEntity.fetchRequest()
+  private func fetchRequest(for requestDto: MoviesRequestDTO) -> NSFetchRequest<MoviesListRequestEntity> {
+    let request: NSFetchRequest = MoviesListRequestEntity.fetchRequest()
     request.predicate = NSPredicate(format: "%K = %d",
-                                    #keyPath(MovieRequestEntity.page), requestDto.page)
+                                    #keyPath(MoviesListRequestEntity.page), requestDto.page)
     return request
   }
   
@@ -50,8 +50,7 @@ extension CoreDataMoviesResponseLocalStorage: MoviesResponseLocalStorage {
       do {
         let fetchRequest = self.fetchRequest(for: request)
         let requestEntity = try context.fetch(fetchRequest).first
-        
-        return requestEntity?.moviePage?.toDTO()
+        return requestEntity?.moviePageEntity?.toDTO()
       }catch {
         throw CoreDataStorageError.readError(error)
       }
@@ -65,7 +64,7 @@ extension CoreDataMoviesResponseLocalStorage: MoviesResponseLocalStorage {
         try self.deleteResponse(for: requestDto, in: context)
         
         let requestEntity = requestDto.toEntity(in: context)
-        requestEntity.moviePage = responseDto.toEntity(in: context)
+        requestEntity.moviePageEntity = responseDto.toEntity(in: context)
         try context.save()
       } catch {
         throw CoreDataStorageError.saveError(error)
