@@ -25,7 +25,6 @@ protocol MoviesListViewModelOutputs {
   var loading: PassthroughSubject<MoviesListViewModelLoading?,Never> { get }
   var errorMessage:PassthroughSubject<String,Never> { get }
   var isEmpty: Bool { get }
-  var screenTitle: String { get }
   var emptyDataTitle: String { get }
 }
 
@@ -47,8 +46,7 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
   var loading: PassthroughSubject<MoviesListViewModelLoading?, Never> = .init()
   var errorMessage: PassthroughSubject<String, Never> = .init()
   var isEmpty: Bool { pages.movies.isEmpty }
-  var screenTitle: String { "Now Playing"}
-  var emptyDataTitle: String { "Couldn't load Now Playing movies"}
+  var emptyDataTitle: String { "No available movies"}
     //MARK: - Init
   init(moviesListUseCase:MoviesListUseCase,
        fetchImageRepo:FetchImageRepository,

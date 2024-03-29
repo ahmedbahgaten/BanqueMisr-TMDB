@@ -109,6 +109,10 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
   }
   
   private func reload(with data: [MovieListItemViewModel]) {
+    guard !data.isEmpty else {
+      tableView.setEmptyMessage(viewModel.emptyDataTitle )
+      return
+    }
     var snapshot = NSDiffableDataSourceSnapshot<Int, MovieListItemViewModel>()
     snapshot.appendSections([0])
     snapshot.appendItems(data)
