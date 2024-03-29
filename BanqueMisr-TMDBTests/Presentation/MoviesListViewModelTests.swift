@@ -12,7 +12,6 @@ final class MoviesListViewModelTests: XCTestCase {
   
   private var sut:DefaultMoviesListViewModel?
   private var usecase:MoviesListUseCaseMock?
-  private var fetchImgRepo:FetchImageRepoMock?
   
   let moviesPages: [MoviesPage] = {
     let page1 = MoviesPage(page: 1, totalPages: 2, movies: [
@@ -27,9 +26,7 @@ final class MoviesListViewModelTests: XCTestCase {
   override func setUp() {
     super.setUp()
     usecase = MoviesListUseCaseMock()
-    fetchImgRepo = FetchImageRepoMock()
     sut = DefaultMoviesListViewModel(moviesListUseCase: usecase!,
-                                     fetchImageRepo: fetchImgRepo!,
                                      moviesType: .nowPlaying)
   }
   
@@ -100,15 +97,15 @@ final class MoviesListViewModelTests: XCTestCase {
   
   func test_whenFetchMoviePoster_whenValidImgDataAvailable_viewModelShouldReturnData() async throws {
     let expectedData = "image data".data(using: .utf8)
-    fetchImgRepo?.data = expectedData
+    usecase?.imageData = expectedData
     let data = try await sut?.fetchPosterImage(posterImgPath: "/3", width: 400)
     XCTAssertEqual(data, expectedData)
-    XCTAssertEqual(fetchImgRepo?.callcount, 1)
+    XCTAssertEqual(usecase?.callCount, 1)
   }
   
   func test_whenFetchMoviePoster_whenNetworkErrorIsThrown_viewModelShouldThrowError() async throws {
     let expectedError = NetworkError.cancelled
-    fetchImgRepo?.error = expectedError
+    usecase?.error = expectedError
     do {
       _ = try await sut?.fetchPosterImage(posterImgPath: "/3", width: 400)
     }catch let error as NetworkError {
