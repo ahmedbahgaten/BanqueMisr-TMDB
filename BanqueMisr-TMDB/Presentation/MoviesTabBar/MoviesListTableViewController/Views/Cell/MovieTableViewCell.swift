@@ -53,7 +53,6 @@ class MovieTableViewCell: UITableViewCell {
                                              width: imgWidth)
       if let img = UIImage(data: imageData) {
         moviePosterImgView.image = img
-        ImageCacheManager.shared.setImage(img, forKey: posterPath)
       }else {
         moviePosterImgView.image = UIImage(named: "TMDB")
       }
