@@ -67,7 +67,7 @@ extension MoviesTabBarDIContainer {
                                          fetchImageRepository: fetchImgRepo)
   }
   func makeMoviesListViewModel(for moviesType:APIEndpoints.MoviesCategoryPath) -> MoviesListViewModel {
-    DefaultMoviesListViewModel(moviesListUseCase: makeMoviesListUseCase(),
+    DefaultMoviesListViewModel(moviesListUseCase: makeMoviesListUseCase(), fetchImageRepo: makeMoviesListFetchImageRepo(),
                                moviesType: moviesType)
   }
   func makeMoviesListUseCase() -> MoviesListUseCase {

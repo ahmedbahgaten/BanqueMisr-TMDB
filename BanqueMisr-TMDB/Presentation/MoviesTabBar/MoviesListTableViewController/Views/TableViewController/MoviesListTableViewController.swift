@@ -81,8 +81,7 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
       guard let self = self else { return UITableViewCell() }
       let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.reuseIdentifier,
                                                for: indexPath) as! MovieTableViewCell
-      cell.setupCell(listItem: movie,
-                     fetchImageRepo: self.fetchImageRepository)
+      cell.setupCell(listItem: movie,moviesListViewModel: viewModel)
       if indexPath.row == viewModel.items.count - 1 {
         loadMoreMovies()
       }

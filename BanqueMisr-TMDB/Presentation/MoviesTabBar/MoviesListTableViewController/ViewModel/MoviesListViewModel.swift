@@ -12,6 +12,7 @@ protocol MoviesListViewModelInputs {
   func fetchMoviesList() async throws -> [MovieListItemViewModel]
   func didLoadNextPage() async throws -> [MovieListItemViewModel]
   func getSelectedMovieId(at index: Int) -> String
+  func fetchPosterImage(posterImgPath:String,width:Int) async throws -> Data
 }
 
 enum MoviesListViewModelLoading {
@@ -33,6 +34,7 @@ typealias MoviesListViewModel = MoviesListViewModelInputs & MoviesListViewModelO
 final class DefaultMoviesListViewModel:MoviesListViewModel {
     //MARK: - Properties
   private let moviesListUseCase:MoviesListUseCase
+  private let fetchImageRepo:FetchImageRepository
   private let moviesType:APIEndpoints.MoviesCategoryPath
   private var pages :[MoviesPage] = []
   private var isCurrentlyFetching:Bool = false
@@ -49,8 +51,10 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
   var emptyDataTitle: String { "Couldn't load Now Playing movies"}
     //MARK: - Init
   init(moviesListUseCase:MoviesListUseCase,
+       fetchImageRepo:FetchImageRepository,
        moviesType:APIEndpoints.MoviesCategoryPath) {
     self.moviesListUseCase = moviesListUseCase
+    self.fetchImageRepo = fetchImageRepo
     self.moviesType = moviesType
   }
     //MARK: - Private methods
@@ -111,6 +115,14 @@ extension DefaultMoviesListViewModel {
     return items[index].id
   }
   
+  func fetchPosterImage(posterImgPath: String,width:Int) async throws -> Data {
+    if let image = ImageCacheManager.shared.getImage(forKey: posterImgPath) {
+      return image.pngData() ?? Data()
+    }else {
+      let imgData = try await fetchImageRepo.fetchImage(with: posterImgPath, width: width)
+      return imgData
+      }
+    }
 }
   //MARK: - Private extension
 private extension Array where Element == MoviesPage {

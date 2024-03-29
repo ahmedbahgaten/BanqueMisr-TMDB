@@ -11,7 +11,7 @@ import UIKit
 class MovieTableViewCell: UITableViewCell {
   //MARK: - Properties
   static let reuseIdentifier = String(describing: MovieTableViewCell.self)
-  private var fetchImageRepository: FetchImageRepository?
+  private var viewModel: MoviesListViewModel?
   private var imageDownloadTask: Task<Data?, Error>?
   //MARK: - Outlets
   @IBOutlet private weak var moviePosterImgView: UIImageView!
@@ -33,42 +33,31 @@ class MovieTableViewCell: UITableViewCell {
   
   //MARK: - Methods
   func setupCell(listItem:MovieListItemViewModel,
-                 fetchImageRepo:FetchImageRepository) {
-    self.fetchImageRepository = fetchImageRepo
+                 moviesListViewModel:MoviesListViewModel) {
+    self.viewModel = moviesListViewModel
     self.movieTitleLbl.text = listItem.title
     self.releaseDateTitleLbl.text = listItem.releaseDate
     guard let posterImgPath = listItem.posterImagePath else {
       moviePosterImgView.image = UIImage(named: "TMDB")
       return
     }
-    setPosterImage(posterPath: posterImgPath,
-                   fetchImageRepo:fetchImageRepo)
+    setPosterImage(posterPath: posterImgPath)
   }
   
   //MARK: - Private Methods
-  private func setPosterImage(posterPath:String,
-                              fetchImageRepo:FetchImageRepository) {
-    if let image = ImageCacheManager.shared.getImage(forKey: posterPath) {
-      moviePosterImgView.image = image
-    }else {
-      imageDownloadTask = Task { [weak self] in
-        guard let self = self else {return nil }
-        do {
-          let imgWidth = Int(moviePosterImgView.frame.size.width)
-          let imageData = try await fetchImageRepo.fetchImage(with: posterPath,
-                                                              width:imgWidth)
-          if let img = UIImage(data: imageData) {
-            moviePosterImgView.image = img
-            ImageCacheManager.shared.setImage(img, forKey: posterPath)
-          }else {
-            moviePosterImgView.image = UIImage(named: "TMDB")
-          }
-          return imageData
-        }catch {
-          moviePosterImgView.image = UIImage(named: "TMDB")
-          return nil
-        }
+  private func setPosterImage(posterPath:String) {
+    imageDownloadTask = Task { [weak self] in
+      guard let self = self else { return nil }
+      let imgWidth = Int(moviePosterImgView.frame.size.width)
+      let imageData = try await self.viewModel!.fetchPosterImage(posterImgPath: posterPath,
+                                             width: imgWidth)
+      if let img = UIImage(data: imageData) {
+        moviePosterImgView.image = img
+        ImageCacheManager.shared.setImage(img, forKey: posterPath)
+      }else {
+        moviePosterImgView.image = UIImage(named: "TMDB")
       }
+      return nil
     }
   }
   

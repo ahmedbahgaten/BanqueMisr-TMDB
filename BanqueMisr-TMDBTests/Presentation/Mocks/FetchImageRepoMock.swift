@@ -1,0 +1,19 @@
+//
+//  File.swift
+//  BanqueMisr-TMDBTests
+//
+//  Created by Ahmed Bahgat on 29/03/2024.
+//
+
+import Foundation
+@testable import BanqueMisr_TMDB
+
+final class FetchImageRepoMock {
+  var data:Data?
+}
+
+extension FetchImageRepoMock:FetchImageRepository {
+  func fetchImage(with imagePath: String, width: Int) async throws -> Data {
+    return data!
+  }
+}

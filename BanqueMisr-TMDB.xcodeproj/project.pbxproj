@@ -86,6 +86,7 @@
 		92E3E29B2BB61F0700EB8014 /* MoviesListUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E29A2BB61F0700EB8014 /* MoviesListUseCaseMock.swift */; };
 		92E3E29D2BB632C100EB8014 /* MovieDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E29C2BB632C100EB8014 /* MovieDetailsViewModelTests.swift */; };
 		92E3E29F2BB6332E00EB8014 /* MovieDetailsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E29E2BB6332E00EB8014 /* MovieDetailsUseCaseMock.swift */; };
+		92E3E2A32BB63F6700EB8014 /* FetchImageRepoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3E2A22BB63F6700EB8014 /* FetchImageRepoMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,7 @@
 		92E3E29A2BB61F0700EB8014 /* MoviesListUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListUseCaseMock.swift; sourceTree = "<group>"; };
 		92E3E29C2BB632C100EB8014 /* MovieDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		92E3E29E2BB6332E00EB8014 /* MovieDetailsUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsUseCaseMock.swift; sourceTree = "<group>"; };
+		92E3E2A22BB63F6700EB8014 /* FetchImageRepoMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageRepoMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -767,6 +769,7 @@
 			children = (
 				92E3E29A2BB61F0700EB8014 /* MoviesListUseCaseMock.swift */,
 				92E3E29E2BB6332E00EB8014 /* MovieDetailsUseCaseMock.swift */,
+				92E3E2A22BB63F6700EB8014 /* FetchImageRepoMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -973,6 +976,7 @@
 				92E3E2892BB5F04200EB8014 /* NetworkServiceTests.swift in Sources */,
 				92E3E2982BB61EB100EB8014 /* MoviesListViewModelTests.swift in Sources */,
 				92E3E27E2BB5E6DF00EB8014 /* MovieDetailsRepositoryMock.swift in Sources */,
+				92E3E2A32BB63F6700EB8014 /* FetchImageRepoMock.swift in Sources */,
 				92E3E28D2BB5F32400EB8014 /* EndpointMock.swift in Sources */,
 				92E3E2932BB6139E00EB8014 /* MockModel.swift in Sources */,
 				923B59342BB12EA000537676 /* BanqueMisr_TMDBTests.swift in Sources */,
