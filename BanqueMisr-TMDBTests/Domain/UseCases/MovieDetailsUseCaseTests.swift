@@ -12,6 +12,7 @@ final class MovieDetailsUseCaseTests: XCTestCase {
   
   private var sut:DefaultMovieDetailstUseCase?
   private var mockRepo:MovieDetailsRepositoryMock?
+  private var mockImageRepo:FetchImageRepoMock?
   private let movieDetails = MovieDetails(id:1,
                                           genres: [],
                                           overview: "overview",
@@ -25,14 +26,16 @@ final class MovieDetailsUseCaseTests: XCTestCase {
   override func setUp() {
     super.setUp()
     mockRepo = MovieDetailsRepositoryMock()
-    sut = DefaultMovieDetailstUseCase(movieDetailsRepository: mockRepo!)
+    mockImageRepo = FetchImageRepoMock()
+    sut = DefaultMovieDetailstUseCase(movieDetailsRepository: mockRepo!,
+                                      movieDetailsPosterRepo: mockImageRepo!)
   }
   
   override func tearDown() {
     super.tearDown()
   }
   
-  func testMovieDetailsRepositoryMock_whenSuccessfullyFetctesMovieDetails_shouldReturnMovieDetails() async throws {
+  func testMovieDetailsUseCase_whenSuccessfullyFetchesMovieDetails_shouldReturnMovieDetails() async throws {
       //Given
     let expectedMovieDetails = movieDetails
     mockRepo?.movieDetails = expectedMovieDetails
@@ -44,13 +47,12 @@ final class MovieDetailsUseCaseTests: XCTestCase {
     XCTAssertEqual(mockRepo?.callCount, 1)
   }
   
-  func testMovieDetailsRepositoryMock_whenFailsToFetcsMovieDetails_shouldThrowException() async throws {
+  func testMovieDetailsUseCase_whenFailsToFetchMovieDetails_shouldThrowException() async throws {
       //Given
     let expectedError = NSError(domain: "Test", code: 500, userInfo: nil)
     mockRepo?.errorToThrow = expectedError
       //When
     let movieID = "1"
-    let expectation = XCTestExpectation(description: "Execute Failure")
       //then
     do {
       _ = try await sut?.execute(for: movieID)
@@ -60,7 +62,33 @@ final class MovieDetailsUseCaseTests: XCTestCase {
     }catch{
       XCTFail("Unexpected error thrown: \(error)")
     }
-    expectation.fulfill()
   }
   
+  func testMovieDetailsUseCase_whenDownloadingImage_shouldReturnImageData() async throws {
+    //Given
+    let expectedImageData = "image data".data(using: .utf8)
+    //When
+    mockImageRepo?.data = expectedImageData
+    let imageData = try await sut?.fetchMovieImagePoster(for: "/3", width: 500)
+    //Then
+    XCTAssertEqual(imageData, expectedImageData)
+    XCTAssertEqual(mockImageRepo?.callcount, 1)
+  }
+  
+  func testMovieDetailsUseCase_whenFailstoDownloadImage_shouldThrowError() async throws {
+    //Given
+    let expectedError = NetworkError.timeout
+    //When
+    mockImageRepo?.error = expectedError
+    do {
+      _ = try await sut?.fetchMovieImagePoster(for: "/3", width: 500)
+      XCTFail("Should throw error")
+    }catch let error as NetworkError {
+      //Then
+      XCTAssertEqual(error, expectedError)
+    }catch {
+      XCTFail("Unknown error is thrown \(error)")
+    }
+    
+  }
 }
