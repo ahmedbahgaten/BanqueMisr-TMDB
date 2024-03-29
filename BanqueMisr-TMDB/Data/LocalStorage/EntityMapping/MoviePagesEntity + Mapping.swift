@@ -13,7 +13,7 @@ extension MoviePagesEntity {
     return .init(
       page: Int(page),
       totalPages: Int(totalPages),
-      movies: movies?.allObjects.map { ($0 as! MovieEntity).toDTO() } ?? []
+      movies: movies?.map { ($0 as! MovieEntity).toDTO() } ?? []
     )
   }
 }

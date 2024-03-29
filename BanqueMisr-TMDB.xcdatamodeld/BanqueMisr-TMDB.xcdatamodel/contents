@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="MovieEntity" representedClassName="MovieEntity" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="String"/>
+        <attribute name="index" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="posterPath" optional="YES" attributeType="String"/>
         <attribute name="releaseDate" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
@@ -10,7 +11,7 @@
     <entity name="MoviePagesEntity" representedClassName="MoviePagesEntity" syncable="YES" codeGenerationType="class">
         <attribute name="page" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="totalPages" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="movies" toMany="YES" deletionRule="Nullify" destinationEntity="MovieEntity" inverseName="moviePages" inverseEntity="MovieEntity"/>
+        <relationship name="movies" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MovieEntity" inverseName="moviePages" inverseEntity="MovieEntity"/>
         <relationship name="request" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MovieRequestEntity" inverseName="moviePage" inverseEntity="MovieRequestEntity"/>
     </entity>
     <entity name="MovieRequestEntity" representedClassName="MovieRequestEntity" syncable="YES" codeGenerationType="class">
