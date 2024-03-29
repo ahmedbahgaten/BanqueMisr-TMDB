@@ -50,6 +50,7 @@ extension CoreDataMoviesResponseLocalStorage: MoviesResponseLocalStorage {
       do {
         let fetchRequest = self.fetchRequest(for: request)
         let requestEntity = try context.fetch(fetchRequest).first
+        
         return requestEntity?.moviePage?.toDTO()
       }catch {
         throw CoreDataStorageError.readError(error)
@@ -69,7 +70,7 @@ extension CoreDataMoviesResponseLocalStorage: MoviesResponseLocalStorage {
         requestEntity.moviePage = responseDto.toEntity(in: context)
         try context.save()
       } catch {
-        throw error
+        throw CoreDataStorageError.saveError(error)
       }
     }
   }
