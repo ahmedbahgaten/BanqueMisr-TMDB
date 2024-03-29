@@ -111,8 +111,9 @@ extension DefaultMoviesListViewModel {
   }
   
   func fetchPosterImage(posterImgPath: String,width:Int) async throws -> Data {
-    let imgData = try await moviesListUseCase.fetchImage(for: posterImgPath,
-                                                         width: width)
+    let imgData = try await moviesListUseCase.fetchMovieCellImage(
+      for: posterImgPath,
+      width: width)
     return imgData
     }
 }
