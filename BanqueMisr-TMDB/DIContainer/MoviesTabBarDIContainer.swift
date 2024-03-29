@@ -27,6 +27,8 @@ final class MoviesTabBarDIContainer {
   init(dependencies: Dependencies) {
     self.dependencies = dependencies
   }
+  //MARK: - LocalStorage
+  lazy var moviesResponseStorage:MoviesResponseLocalStorage = CoreDataMoviesResponseLocalStorage()
     // MARK: - Flow Coordinators
   func makeTabBarCoordinators() -> [Coordinator] {
     let nowPlayingCoordinator = makeNowPlayingMoviesCoordinator()
@@ -74,7 +76,8 @@ extension MoviesTabBarDIContainer {
     DefaultMoviesListUseCase(moviesRepository: makeMoviesListRepository())
   }
   func makeMoviesListRepository() -> MoviesRepository {
-    DefaultMoviesRepository(dataTransferService: dependencies.apiDataTransferService)
+    DefaultMoviesRepository(dataTransferService: dependencies.apiDataTransferService,
+                            localStorage: moviesResponseStorage)
   }
   func makeMoviesListFetchImageRepo() -> FetchImageRepository {
     DefaultFetchImageRepository(dataTransferService: dependencies.imageDataTransferService)
