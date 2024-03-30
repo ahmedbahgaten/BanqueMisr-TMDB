@@ -37,8 +37,10 @@ final class DefaultDataTransferService {
       let result: T = try decoder.decode(data)
       return result
     } catch {
-      self.errorLogger.log(error: error)
-      throw DataTransferError.parsing(error)
+      guard let data = data else { throw DataTransferError.noResponse }
+      let apiError:APIError = try decoder.decode(data)
+      self.errorLogger.log(error: apiError)
+      throw apiError
     }
   }
 }

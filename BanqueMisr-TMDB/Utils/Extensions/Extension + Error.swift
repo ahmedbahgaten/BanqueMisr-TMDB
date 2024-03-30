@@ -12,6 +12,8 @@ extension Error {
       return error.errorMessage
     }else if let error = self as? DataTransferError {
       return error.errorMessage
+    }else if let error = self as? APIError {
+      return error.statusMessage
     }else {
       return "Something went wrong"
     }
