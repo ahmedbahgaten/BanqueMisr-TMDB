@@ -3,6 +3,7 @@
 - This is an iOS app that allows users to browse a curated list of movies sourced from The Movie Database (TMDB) API.
 - This app is built using clean architecture principles to ensure maintainability, testability, and scalability.
 - It supports iOS 15 and above.
+- The app uses UIKit.
 
 # Features
 - Browse a list of Now Playing , Popular, and Upcoming movies
