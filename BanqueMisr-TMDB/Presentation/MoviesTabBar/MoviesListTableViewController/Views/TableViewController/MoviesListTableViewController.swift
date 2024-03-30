@@ -47,11 +47,8 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
     viewModel.loading
       .receive(on: DispatchQueue.main)
       .sink { [weak self] loading in
-      DispatchQueue.main.async {
         self?.setupLoading(loading)
-      }
-    }
-    .store(in: &subscriptions)
+    }.store(in: &subscriptions)
     
     viewModel.errorMessage
       .receive(on: DispatchQueue.main)
@@ -88,7 +85,7 @@ extension MoviesListTableViewController {
         reload(with: pages)
         self.refresh.endRefreshing()
       }catch {
-        self?.tableView.setEmptyMessage()
+        tableView.setEmptyMessage()
       }
     }
   }
