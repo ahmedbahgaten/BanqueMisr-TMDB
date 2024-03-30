@@ -19,10 +19,7 @@ The app follows the principles of clean architecture, separating concerns into d
 - Presentation Layer: Responsible for displaying data to the user and handling user input. Implemented using UIKit for the user interface and ViewModels to manage UI logic.
 
 - Domain Layer: Contains business logic and use cases that are independent of any specific framework. This layer defines entities and interacts with repositories.
-
-  # Project Branches
-  - The app is developed on the Development branch 
-
+  
 - Data Layer: Handles data retrieval and storage. It communicates with external data sources (TMDB API) and local data storage (Core Data). Repositories act as an abstraction layer between the domain and data layers.
 
 The clean architecture allows for easy testing, maintenance, and future modifications, as each layer is independent and loosely coupled.
@@ -30,3 +27,7 @@ The clean architecture allows for easy testing, maintenance, and future modifica
 
 # Unit Tests
 - The project includes a comprehensive suite of unit tests to ensure the correctness of the app's logic and functionality. Unit tests are written using XCTest and cover various aspects of the app, including ViewModel logic, data parsing, and network requests. Running the unit tests provides confidence in the app's behavior and helps maintain stability during development and refactoring.
+
+
+# Project Branches
+- The app is developed on the Development branch 
