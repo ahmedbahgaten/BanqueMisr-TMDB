@@ -83,7 +83,6 @@ extension MoviesListTableViewController {
       do {
         let pages = try await viewModel.fetchMoviesList()
         reload(with: pages)
-        self.refresh.endRefreshing()
       }catch {
         tableView.setEmptyMessage()
       }
@@ -144,6 +143,7 @@ extension MoviesListTableViewController {
     snapshot.appendSections([0])
     snapshot.appendItems(data)
     dataSource.apply(snapshot)
+    self.refresh.endRefreshing()
   }
 }
 //MARK: - TableViewDelegate
