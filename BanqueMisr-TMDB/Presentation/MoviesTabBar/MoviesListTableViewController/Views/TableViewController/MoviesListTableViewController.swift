@@ -142,6 +142,7 @@ extension MoviesListTableViewController {
       tableView.setEmptyMessage(viewModel.emptyDataTitle )
       return
     }
+    self.tableView.removeEmptyMessage()
     var snapshot = NSDiffableDataSourceSnapshot<Int, MovieListItemUI>()
     snapshot.appendSections([0])
     snapshot.appendItems(data)
