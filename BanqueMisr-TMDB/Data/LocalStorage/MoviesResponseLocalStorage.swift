@@ -46,7 +46,8 @@ final class CoreDataMoviesResponseLocalStorage {
 
 extension CoreDataMoviesResponseLocalStorage: MoviesResponseLocalStorage {
   func getResponse(for request: MoviesRequestDTO) async throws -> MoviesResponseDTO? {
-    try await coreDataStorage.performBackgroundTask { context in
+    try await coreDataStorage.performBackgroundTask { [weak self] context in
+      guard let self = self else { return nil }
       do {
         let fetchRequest = self.fetchRequest(for: request)
         let requestEntity = try context.fetch(fetchRequest).first
@@ -59,7 +60,8 @@ extension CoreDataMoviesResponseLocalStorage: MoviesResponseLocalStorage {
   
   func save(response responseDto: MoviesResponseDTO,
             for requestDto: MoviesRequestDTO) async throws {
-    try await coreDataStorage.performBackgroundTask { context in
+    try await coreDataStorage.performBackgroundTask { [weak self] context in
+      guard let self = self else { return nil }
       do {
         try self.deleteResponse(for: requestDto, in: context)
         

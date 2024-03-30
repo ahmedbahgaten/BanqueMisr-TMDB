@@ -59,7 +59,8 @@ extension CoreDataMoviePosterImageLocalStorage:MoviePosterImageLocalStorage {
   }
   
   func getImage(for posterPath: String) async throws -> Data? {
-    try await coreDataStorage.performBackgroundTask { context in
+    try await coreDataStorage.performBackgroundTask { [weak self] context in
+      guard let self = self else { return nil }
       do {
         let fetchRequest = self.fetchRequest(for: posterPath)
         let requestEntity = try context.fetch(fetchRequest).first
