@@ -35,6 +35,7 @@
         <attribute name="posterPath" optional="YES" attributeType="String"/>
     </entity>
     <entity name="MoviesListRequestEntity" representedClassName="MoviesListRequestEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="movieCategoryType" optional="YES" attributeType="String"/>
         <attribute name="page" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="moviePageEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MoviePagesEntity" inverseName="moviesListRequest" inverseEntity="MoviePagesEntity"/>
     </entity>

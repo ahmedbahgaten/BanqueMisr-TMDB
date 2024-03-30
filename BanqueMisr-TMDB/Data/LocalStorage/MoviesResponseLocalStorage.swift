@@ -9,8 +9,11 @@ import Foundation
 import CoreData
 
 protocol MoviesResponseLocalStorage {
-  func getResponse(for request: MoviesRequestDTO) async throws -> MoviesResponseDTO?
-  func save(response: MoviesResponseDTO, for requestDto: MoviesRequestDTO) async throws
+  func getResponse(for request: MoviesRequestDTO,
+                   and movieCategory:String) async throws -> MoviesResponseDTO?
+  func save(response: MoviesResponseDTO,
+            for movieCategory:String,
+            and requestDto: MoviesRequestDTO) async throws
 }
 
 final class CoreDataMoviesResponseLocalStorage {
@@ -23,16 +26,20 @@ final class CoreDataMoviesResponseLocalStorage {
   
     // MARK: - Private
   
-  private func fetchRequest(for requestDto: MoviesRequestDTO) -> NSFetchRequest<MoviesListRequestEntity> {
+  private func fetchRequest(for requestDto: MoviesRequestDTO,
+                            movieCategoryType:String) -> NSFetchRequest<MoviesListRequestEntity> {
     let request: NSFetchRequest = MoviesListRequestEntity.fetchRequest()
-    request.predicate = NSPredicate(format: "%K = %d",
-                                    #keyPath(MoviesListRequestEntity.page), requestDto.page)
+    request.predicate = NSPredicate(format: "%K = %d AND %K = %@",
+                                    #keyPath(MoviesListRequestEntity.page), requestDto.page,
+                                    #keyPath(MoviesListRequestEntity.movieCategoryType), movieCategoryType)
     return request
   }
   
   private func deleteResponse(for requestDto: MoviesRequestDTO,
+                              for movieCategory:String,
                               in context: NSManagedObjectContext) throws  {
-    let request = fetchRequest(for: requestDto)
+    let request = fetchRequest(for: requestDto,
+                               movieCategoryType: movieCategory)
     
     do {
       if let result = try context.fetch(request).first {
@@ -45,11 +52,13 @@ final class CoreDataMoviesResponseLocalStorage {
 }
 
 extension CoreDataMoviesResponseLocalStorage: MoviesResponseLocalStorage {
-  func getResponse(for request: MoviesRequestDTO) async throws -> MoviesResponseDTO? {
+  func getResponse(for request: MoviesRequestDTO,
+                   and movieCategory:String) async throws -> MoviesResponseDTO? {
     try await coreDataStorage.performBackgroundTask { [weak self] context in
       guard let self = self else { return nil }
       do {
-        let fetchRequest = self.fetchRequest(for: request)
+        let fetchRequest = self.fetchRequest(for: request,
+                                             movieCategoryType: movieCategory)
         let requestEntity = try context.fetch(fetchRequest).first
         return requestEntity?.moviePageEntity?.toDTO()
       }catch {
@@ -59,14 +68,18 @@ extension CoreDataMoviesResponseLocalStorage: MoviesResponseLocalStorage {
   }
   
   func save(response responseDto: MoviesResponseDTO,
-            for requestDto: MoviesRequestDTO) async throws {
+            for movieCategory:String,
+            and requestDto: MoviesRequestDTO) async throws {
     try await coreDataStorage.performBackgroundTask { [weak self] context in
       guard let self = self else { return }
       do {
-        try self.deleteResponse(for: requestDto, in: context)
+        try self.deleteResponse(for: requestDto,
+                                for: movieCategory,
+                                in: context)
         
         let requestEntity = requestDto.toEntity(in: context)
         requestEntity.moviePageEntity = responseDto.toEntity(in: context)
+        requestEntity.movieCategoryType = movieCategory
         try context.save()
       } catch {
         throw CoreDataStorageError.saveError(error)

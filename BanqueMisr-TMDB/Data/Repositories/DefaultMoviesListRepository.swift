@@ -26,10 +26,15 @@ extension DefaultMoviesListRepository:MoviesListRepository {
       let endpoint = APIEndpoints.getMovies(category: category,
                                             with: requestDTO)
       let responseDTO = try await self.dataTransferService.request(with: endpoint)
-      try await localStorage.save(response: responseDTO, for: requestDTO)
+      try await localStorage.save(
+        response: responseDTO,
+        for: category.rawValue,
+        and: requestDTO)
       return responseDTO.toDomain()
     }catch {
-      if let cachedResponse = try await localStorage.getResponse(for: requestDTO) {
+      if let cachedResponse = try await localStorage.getResponse(
+        for: requestDTO,
+        and: category.rawValue) {
         return cachedResponse.toDomain()
       }else {
         throw error
