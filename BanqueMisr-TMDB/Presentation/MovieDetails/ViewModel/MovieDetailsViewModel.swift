@@ -16,6 +16,7 @@ protocol MovieDetailsViewModelInputs {
 protocol MovieDetailsViewModelOutputs {
   var errorMessage:PassthroughSubject<String,Never> { get }
   var isLoading:PassthroughSubject<Bool,Never> { get }
+  var screenTitle:String { get }
 }
 
 typealias MovieDetailsViewModel = MovieDetailsViewModelInputs & MovieDetailsViewModelOutputs
@@ -27,6 +28,7 @@ final class DefaultMovieDetailsViewModel {
   //MARK: - Outputs
   var errorMessage: PassthroughSubject<String, Never> = .init()
   var isLoading: PassthroughSubject<Bool, Never> = .init()
+  var screenTitle: String { "Movie Details "}
   //MARK: - Init
   init(movieDetailsUseCase: MovieDetailsUseCase,
        movieID:String) {
