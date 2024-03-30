@@ -79,7 +79,7 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
 //MARK: - LoadingMovies
 extension MoviesListTableViewController {
   private func loadMovies() {
-    Task {
+    Task { @MainActor in
       do {
         let pages = try await viewModel.fetchMoviesList()
         reload(with: pages)
