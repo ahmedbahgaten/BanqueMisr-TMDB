@@ -5,7 +5,7 @@
 - It supports iOS 15 and above.
 
 # Features
-- Browse a list of popular movies.
+- Browse a list of Now Playing , Popular, and Upcoming movies
 - View details of each movie, including title, poster, release date, overview, budget,spoken languages,runtime and genres.
 
 # Architecture
