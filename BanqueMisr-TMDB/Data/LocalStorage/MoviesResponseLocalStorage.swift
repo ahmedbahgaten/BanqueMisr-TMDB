@@ -61,7 +61,7 @@ extension CoreDataMoviesResponseLocalStorage: MoviesResponseLocalStorage {
   func save(response responseDto: MoviesResponseDTO,
             for requestDto: MoviesRequestDTO) async throws {
     try await coreDataStorage.performBackgroundTask { [weak self] context in
-      guard let self = self else { return nil }
+      guard let self = self else { return }
       do {
         try self.deleteResponse(for: requestDto, in: context)
         
