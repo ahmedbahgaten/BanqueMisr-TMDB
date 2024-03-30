@@ -19,7 +19,7 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
   private var nextPageLoadingSpinner: UIActivityIndicatorView?
   private var subscriptions = Set<AnyCancellable>()
   private let refresh = UIRefreshControl()
-  private var dataSource:UITableViewDiffableDataSource<Int,MovieListItemViewModel>!
+  private var dataSource:UITableViewDiffableDataSource<Int,MovieListItemUI>!
   weak var delegate:MoviesListTableViewDelegate?
   //MARK: - Init
   init(viewModel: MoviesListViewModel,
@@ -108,12 +108,12 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
     loadMovies()
   }
   
-  private func reload(with data: [MovieListItemViewModel]) {
+  private func reload(with data: [MovieListItemUI]) {
     guard !data.isEmpty else {
       tableView.setEmptyMessage(viewModel.emptyDataTitle )
       return
     }
-    var snapshot = NSDiffableDataSourceSnapshot<Int, MovieListItemViewModel>()
+    var snapshot = NSDiffableDataSourceSnapshot<Int, MovieListItemUI>()
     snapshot.appendSections([0])
     snapshot.appendItems(data)
     dataSource.apply(snapshot)

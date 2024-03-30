@@ -6,14 +6,14 @@
 //
 
 import Foundation
-struct MovieListItemViewModel: Equatable,Hashable {
+struct MovieListItemUI: Equatable,Hashable {
   let id: String
   let title: String
   let releaseDate: String
   let posterImagePath: String?
 }
 
-extension MovieListItemViewModel {
+extension MovieListItemUI {
   
   init(movie: Movie) {
     self.id = movie.id

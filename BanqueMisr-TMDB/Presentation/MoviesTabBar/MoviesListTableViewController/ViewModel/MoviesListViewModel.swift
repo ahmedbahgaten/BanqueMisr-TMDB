@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol MoviesListViewModelInputs {
-  func fetchMoviesList() async throws -> [MovieListItemViewModel]
-  func didLoadNextPage() async throws -> [MovieListItemViewModel]
+  func fetchMoviesList() async throws -> [MovieListItemUI]
+  func didLoadNextPage() async throws -> [MovieListItemUI]
   func getSelectedMovieId(at index: Int) -> String
   func fetchPosterImage(posterImgPath:String,width:Int) async throws -> Data
 }
@@ -21,7 +21,7 @@ enum MoviesListViewModelLoading {
 }
 
 protocol MoviesListViewModelOutputs {
-  var items:[MovieListItemViewModel] { get }
+  var items:[MovieListItemUI] { get }
   var loading: PassthroughSubject<MoviesListViewModelLoading?,Never> { get }
   var errorMessage:PassthroughSubject<String,Never> { get }
   var isEmpty: Bool { get }
@@ -41,7 +41,7 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
   var hasMorePages:Bool { currentPage < totalPageCount }
   var nextPage: Int { hasMorePages ? currentPage + 1 : currentPage }
     //MARK: - Outputs
-  var items: [MovieListItemViewModel] = []
+  var items: [MovieListItemUI] = []
   var loading: PassthroughSubject<MoviesListViewModelLoading?, Never> = .init()
   var errorMessage: PassthroughSubject<String, Never> = .init()
   var isEmpty: Bool { pages.movies.isEmpty }
@@ -57,7 +57,7 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
     currentPage = moviesPage.page
     totalPageCount = moviesPage.totalPages
     removeDuplicatedMovies(moviesPage: moviesPage)
-    items = pages.movies.map(MovieListItemViewModel.init)
+    items = pages.movies.map(MovieListItemUI.init)
   }
   
   private func removeDuplicatedMovies(moviesPage:MoviesPage) {
@@ -76,7 +76,7 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
     items.removeAll()
   }
   
-  private func loadMovies(loading:MoviesListViewModelLoading?) async throws -> [MovieListItemViewModel] {
+  private func loadMovies(loading:MoviesListViewModelLoading?) async throws -> [MovieListItemUI] {
     do {
       self.loading.send(loading)
       isCurrentlyFetching = true
@@ -95,13 +95,13 @@ final class DefaultMoviesListViewModel:MoviesListViewModel {
   //MARK: - Inputs
 extension DefaultMoviesListViewModel {
   
-  func fetchMoviesList() async throws -> [MovieListItemViewModel] {
+  func fetchMoviesList() async throws -> [MovieListItemUI] {
     resetPages()
     let loading: MoviesListViewModelLoading? = items.isEmpty ? .fullScreen : .none
     return try await loadMovies(loading: loading)
   }
   
-  func didLoadNextPage() async throws -> [MovieListItemViewModel] {
+  func didLoadNextPage() async throws -> [MovieListItemUI] {
     guard hasMorePages, !isCurrentlyFetching else { return [] }
     return try await loadMovies(loading: .nextPage)
   }

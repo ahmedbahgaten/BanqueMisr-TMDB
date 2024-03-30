@@ -32,7 +32,7 @@ class MovieTableViewCell: UITableViewCell {
   }
   
   //MARK: - Methods
-  func setupCell(listItem:MovieListItemViewModel,
+  func setupCell(listItem:MovieListItemUI,
                  moviesListViewModel:MoviesListViewModel) {
     self.viewModel = moviesListViewModel
     self.movieTitleLbl.text = listItem.title
