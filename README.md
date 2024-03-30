@@ -11,7 +11,7 @@
 # Architecture
 The app follows the principles of clean architecture, separating concerns into distinct layers:
 
-- Presentation Layer: Responsible for displaying data to the user and handling user input. Implemented using SwiftUI for the user interface and ViewModels to manage UI logic.
+- Presentation Layer: Responsible for displaying data to the user and handling user input. Implemented using UIKit for the user interface and ViewModels to manage UI logic.
 
 - Domain Layer: Contains business logic and use cases that are independent of any specific framework. This layer defines entities and interacts with repositories.
 
