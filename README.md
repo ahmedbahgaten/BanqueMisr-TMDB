@@ -8,12 +8,20 @@
 - Browse a list of Now Playing , Popular, and Upcoming movies
 - View details of each movie, including title, poster, release date, overview, budget,spoken languages,runtime and genres.
 
+# Bonus Features
+- Pagination for loading movies.
+- Implemented In-Memory cache for images to enhance UX
+- Implemented database caching using CoreData.
+
 # Architecture
 The app follows the principles of clean architecture, separating concerns into distinct layers:
 
 - Presentation Layer: Responsible for displaying data to the user and handling user input. Implemented using UIKit for the user interface and ViewModels to manage UI logic.
 
 - Domain Layer: Contains business logic and use cases that are independent of any specific framework. This layer defines entities and interacts with repositories.
+
+  # Project Branches
+  - The app is developed on the Development branch 
 
 - Data Layer: Handles data retrieval and storage. It communicates with external data sources (TMDB API) and local data storage (Core Data). Repositories act as an abstraction layer between the domain and data layers.
 
