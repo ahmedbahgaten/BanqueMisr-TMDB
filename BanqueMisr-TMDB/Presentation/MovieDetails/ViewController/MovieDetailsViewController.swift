@@ -41,6 +41,7 @@ class MovieDetailsViewController: UIViewController,Alertable {
   
   private func setupView() {
     moviePosterImgView.layer.cornerRadius = 8
+    title = viewModel.screenTitle
   }
   
   private func setupBinding() {
@@ -81,10 +82,8 @@ class MovieDetailsViewController: UIViewController,Alertable {
     budgetLbl.text = movieDetails.budgetTxt
     statusLbl.text = movieDetails.status
     spokenLanguageLbl.text = movieDetails.spokenLangaugesTxt
-    if let image = UIImage(data: moviePosterImage) {
-      moviePosterImgView.image = image
-    }else {
-      moviePosterImgView.image = UIImage(named: "TMDB")
-    }
+    let posterImage = UIImage(data: moviePosterImage)
+    let imagePlaceholder = UIImage(named: "TMDB")
+    moviePosterImgView.image = posterImage ?? imagePlaceholder
   }
 }
