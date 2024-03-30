@@ -90,9 +90,9 @@ extension MoviesListTableViewController {
   }
   
   private func loadMoreMovies() {
-    Task { @MainActor [weak self] in
-      let items = try await self?.viewModel.didLoadNextPage() ?? []
-      self?.reload(with: items)
+    Task { @MainActor in
+      let items = try await self.viewModel.didLoadNextPage()
+      self.reload(with: items)
     }
   }
 }
