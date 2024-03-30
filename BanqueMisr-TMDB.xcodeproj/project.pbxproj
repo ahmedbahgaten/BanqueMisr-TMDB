@@ -465,6 +465,7 @@
 		923B59902BB23A8500537676 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				9291522A2BB5C01A007CEC48 /* NibInstantiable.swift */,
 				923B598E2BB23A7D00537676 /* Alertable.swift */,
 			);
 			path = Protocols;
@@ -587,7 +588,6 @@
 			isa = PBXGroup;
 			children = (
 				929152292BB5C004007CEC48 /* LoaderView */,
-				9291522A2BB5C01A007CEC48 /* NibInstantiable.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
