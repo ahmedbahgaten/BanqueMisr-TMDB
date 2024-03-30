@@ -36,18 +36,13 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupView()
     setupBinding()
     setupTableView()
     setupDataSource()
     setupRefreshControl()
-    refreshApps([])
+    loadMovies()
   }
-  
     //MARK: - Methods
-  private func setupView() {
-  }
-  
   private func setupBinding() {
     viewModel.loading
       .receive(on: DispatchQueue.main)
@@ -67,6 +62,55 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
                         preferredStyle: .alert)
       }.store(in: &subscriptions)
   }
+  private func setupLoading(_ loading:MoviesListViewModelLoading?) {
+    switch loading {
+      case .fullScreen:
+        delegate?.showLoader(show: true)
+      case .nextPage:
+        nextPageLoadingSpinner?.removeFromSuperview()
+        let loaderSize: CGSize = .init(width: tableView.frame.size.width,
+                                       height: 44)
+        nextPageLoadingSpinner = tableView.makeActivityIndicator(size:loaderSize)
+        tableView.tableFooterView = nextPageLoadingSpinner
+      case nil:
+        refresh.endRefreshing()
+        tableView.tableFooterView = nil
+        delegate?.showLoader(show: false)
+    }
+  }
+}
+//MARK: - LoadingMovies
+extension MoviesListTableViewController {
+  private func loadMovies() {
+    Task {
+      let pages = try await viewModel.fetchMoviesList()
+      reload(with: pages)
+      self.refresh.endRefreshing()
+    }
+  }
+  
+  private func loadMoreMovies() {
+    Task { @MainActor [weak self] in
+      let items = try await self?.viewModel.didLoadNextPage() ?? []
+      self?.reload(with: items)
+    }
+  }
+}
+//MARK: -RefreshControl
+extension MoviesListTableViewController {
+  private func setupRefreshControl() {
+    refresh.addTarget(self, action: #selector(refreshApps(_:)), for: .valueChanged)
+    refresh.tintColor = .clear
+    refresh.subviews.first?.alpha = 0
+  }
+  
+  @objc
+  private func refreshApps(_ sender: Any) {
+    loadMovies()
+  }
+}
+//MARK: - TableView methods
+extension MoviesListTableViewController {
   
   private func setupTableView() {
     tableView.delegate = self
@@ -89,25 +133,6 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
     })
   }
   
-  private func loadMoreMovies() {
-    Task { @MainActor [weak self] in
-      let items = try await self?.viewModel.didLoadNextPage() ?? []
-      self?.reload(with: items)
-    }
-  }
-  
-  private func setupRefreshControl() {
-    refresh.addTarget(self, action: #selector(refreshApps(_:)), for: .valueChanged)
-    refresh.tintColor = .clear
-    refresh.subviews.first?.alpha = 0
-  }
-  
-  @objc
-  private func refreshApps(_ sender: Any) {
-    reload(with: [])
-    loadMovies()
-  }
-  
   private func reload(with data: [MovieListItemUI]) {
     guard !data.isEmpty else {
       tableView.setEmptyMessage(viewModel.emptyDataTitle )
@@ -118,34 +143,8 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
     snapshot.appendItems(data)
     dataSource.apply(snapshot)
   }
-  
-  private func setupLoading(_ loading:MoviesListViewModelLoading?) {
-    switch loading {
-      case .fullScreen:
-        delegate?.showLoader(show: true)
-      case .nextPage:
-        nextPageLoadingSpinner?.removeFromSuperview()
-        nextPageLoadingSpinner = tableView.makeActivityIndicator(size: .init(width: tableView.frame.size.width, height: 44))
-        tableView.tableFooterView = nextPageLoadingSpinner
-      case nil:
-        refresh.endRefreshing()
-        tableView.tableFooterView = nil
-        delegate?.showLoader(show: false)
-    }
-  }
-  
-  private func loadMovies() {
-    Task {
-      do{
-        let pages = try await viewModel.fetchMoviesList()
-        reload(with: pages)
-        self.refresh.endRefreshing()
-      }catch {
-        
-      }
-    }
-  }
 }
+//MARK: - TableViewDelegate
 extension MoviesListTableViewController {
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     UITableView.automaticDimension
