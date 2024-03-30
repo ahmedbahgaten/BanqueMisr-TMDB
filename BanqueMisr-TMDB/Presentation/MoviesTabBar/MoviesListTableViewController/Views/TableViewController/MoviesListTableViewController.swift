@@ -80,13 +80,9 @@ final class MoviesListTableViewController: UITableViewController ,Alertable {
 extension MoviesListTableViewController {
   private func loadMovies() {
     Task {
-      do {
-        let pages = try await viewModel.fetchMoviesList()
-        reload(with: pages)
-        self.refresh.endRefreshing()
-      }catch {
-        tableView.setEmptyMessage()
-      }
+      let pages = try await viewModel.fetchMoviesList()
+      reload(with: pages)
+      self.refresh.endRefreshing()
     }
   }
   
